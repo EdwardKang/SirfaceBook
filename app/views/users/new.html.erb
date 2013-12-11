@@ -1,0 +1,49 @@
+<%= button_to "Sign In", new_session_url, method: :get %>
+
+<h2>Sign Up</h2>
+
+<form action="<%= users_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label for="first_name">First Name</label>
+  <input type="text" name="user[first_name]" value="<%= @user.first_name %>" id="first_name">
+
+  <label for="last_name">Last Name</label>
+  <input type="text" name="user[last_name]" value="<%= @user.last_name %>" id="last_name">
+
+  <label for="email">Email</label>
+  <input type="text" name="user[email]" value="<%= @user.email %>" id="email">
+
+  <label for="password">Password</label>
+  <input type="password" name="user[password]" id="password">
+
+  <select name="user[birth_month]" id="user_birth_month">
+    <% months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] %>
+    <% months.each do |month| %>
+      <option value="<%= month %>"><%= month %></option>
+    <% end %>
+  </select>
+
+  <select name="user[birth_day]" id="user_birth_day">
+    <% (1..30).each do |day| %>
+      <option value="<%= day %>"><%= day %></option>
+    <% end %>
+  </select>
+
+  <select name="user[birth_year]" id="user_birth_year">
+    <% (1950..DateTime.now.year).to_a.reverse.each do |year| %>
+      <option value="<%= year %>"><%= year %></option>
+    <% end %>
+  </select>
+
+  <label>
+    <label for="male">Male</label>
+    <input type="radio" name="user[gender]" value="Male" id="male">
+
+    <label for="female">Female</label>
+    <input type="radio" name="user[gender]" value="Female" id="male">
+  </label>
+
+
+  <p><input type="submit" value="Sign Up"></p>
+</form>

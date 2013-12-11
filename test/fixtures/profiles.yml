@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  high_school: MyString
+  college: MyString
+  employer: MyString
+  current_city: MyString
+  hometown: MyString
+
+two:
+  high_school: MyString
+  college: MyString
+  employer: MyString
+  current_city: MyString
+  hometown: MyString
