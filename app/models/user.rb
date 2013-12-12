@@ -31,6 +31,27 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many(
+    :initiated_friendships,
+    class_name: "Friendship",
+    foreign_key: :friender_id,
+    primary_key: :id
+  )
+
+  has_many(
+    :received_friendships,
+    class_name: "Friendship",
+    foreign_key: :friendee_id,
+    primary_key: :id
+  )
+
+  has_many :received_friends, through: :received_friendships, source: :friender
+  has_many :initiated_friends, through: :initiated_friendships, source: :friendee
+
+  def is_friend?
+    
+  end
+
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
