@@ -1,0 +1,45 @@
+<%= render "header" %>
+
+<section class="about">
+  <header>
+    <h3>About</h3>
+  </header>
+
+  <body>
+    <div class="right">Basic Information
+      <table class="basic-info" cellpadding="5">
+        <tr>
+          <th>Birthday</th>
+          <td><%= "#{@user.birth_month} #{@user.birth_day}, #{@user.birth_year}" %><td>
+        </tr>
+
+        <tr>
+          <th>Gender</th>
+          <td><%= @user.gender %></td>
+        </tr>
+
+        <%= render "optional_row", detail: @user.profile.current_city, title: "Current City" %>
+
+        <%= render "optional_row", detail: @user.profile.hometown, title: "Hometown" %>
+
+        <%= render "optional_row", detail: @user.profile.interests, title: "Interests" %>
+      </table>
+
+
+    </div>
+
+
+    <div class="left">Work and Education
+      <table class="work-info" cellpadding="5">
+        <%= render "optional_row", detail: @user.profile.high_school, title: "High School" %>
+
+        <%= render "optional_row", detail: @user.profile.college, title: "College/University" %>
+
+        <%= render "optional_row", detail: @user.profile.employer, title: "Employer" %>
+
+      </table>
+    </div>
+
+  </body>
+
+</section>

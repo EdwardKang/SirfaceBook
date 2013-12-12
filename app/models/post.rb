@@ -9,4 +9,18 @@ class Post < ActiveRecord::Base
     foreign_key: "post_id",
     primary_key: "id"
   )
+
+  belongs_to(
+    :sender,
+    class_name: "User",
+    foreign_key: :sender_id,
+    primary_key: :id
+  )
+
+  belongs_to(
+    :reveiver,
+    class_name: "User",
+    foreign_key: :receiver_id,
+    primary_key: :id
+  )
 end

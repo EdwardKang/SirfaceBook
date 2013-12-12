@@ -8,8 +8,11 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(params[:profile])
     @profile.user_id = current_user.id
-    @profile.save
-    redirect_to root_url
+    if @profile.save
+      redirect_to root_url
+    else
+      flash[:errors] = @profile.errors.full_messages
+      render :new
   end
 
   def edit
