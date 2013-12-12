@@ -1,7 +1,11 @@
 <% @users.each do |user| %>
   <p>
-    <%= "#{user.first_name} #{user.last_name}" %>
-    <%= "PUT FRIEND BUTTON HERE" %>
+    <form action="<%= friendships_url %>" method="post">
+      <%= "#{user.first_name} #{user.last_name}" %>
+      <input type="hidden" name="friendship[friendee_id]" value="<%= user.id %>">
+      <input type="hidden" name="friendship[friender_id]" value="<%= current_user.id %>">
+      <input type="submit" value="Friend">
+    </form>
   </p>
 
 <% end %>

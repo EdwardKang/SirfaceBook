@@ -1,5 +1,7 @@
 class Friendship < ActiveRecord::Base
-  attr_accessible :friendee_id, :friender_id, :pending
+  attr_accessible :friendee_id, :friender_id, :is_pending
+
+  validates_presence_of :friendee_id, :fiender_id, :is_pending
 
   belongs_to(
     :friender,

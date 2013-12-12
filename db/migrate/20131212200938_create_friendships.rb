@@ -3,7 +3,7 @@ class CreateFriendships < ActiveRecord::Migration
     create_table :friendships do |t|
       t.integer :friender_id
       t.integer :friendee_id
-      t.boolean :pending
+      t.boolean :is_pending
 
       t.timestamps
     end
