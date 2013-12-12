@@ -1,0 +1,6 @@
+<form action="<%= posts_url %>" method="post">
+  <input type="text" name="post[body]">
+  <input type="hidden" name="post[receiver_id]" value="<%= current_user.id %>">
+
+  <p><input type="submit" value="Post"></p>
+</form>
