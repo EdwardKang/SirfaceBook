@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_user!, only: [:show]
+  before_filter :require_no_current_user!, only: :new
 
   def new
     @user = User.new
@@ -14,9 +14,5 @@ class UsersController < ApplicationController
       flash.now[:errors] = @user.errors.full_messages
       render :new
     end
-  end
-
-  def show
-    @user = User.find(current_user.id)
   end
 end

@@ -1,25 +1,3 @@
 <h2>Fill Out Your Basic Information</h2>
 
-<form action="<%= profiles_url %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-  <label for="high_school">High School</label>
-  <input type="text" name="profile[high_school]" value="<%= @profile.high_school %>" id="high_school">
-
-  <label for="college">College / University</label>
-  <input type="text" name="profile[college]" value="<%= @profile.college %>" id="college">
-
-  <label for="employer">Employer</label>
-  <input type="text" name="profile[employer]" value="<%= @profile.employer %>" id="employer">
-
-  <label for="current_city">Current City</label>
-  <input type="text" name="profile[current_city]" value="<%= @profile.current_city %>" id="current_city">
-
-  <label for="hometown">Hometown</label>
-  <input type="text" name="profile[hometown]" value="<%= @profile.hometown %>" id="hometown">
-
-  <label for="interests">Interests</label>
-  <input type="text" name="profile[interests]" value="<%= @profile.interests %>" id="interests">
-
-  <p><input type="submit" value="Submit Your Profile"></p>
-</form>
+<%= render :partial => 'form', :locals => { url: profiles_url, value: "post"} %>

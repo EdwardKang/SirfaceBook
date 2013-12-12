@@ -9,7 +9,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(params[:profile])
     @profile.user_id = current_user.id
     @profile.save
-    redirect_to user_url(current_user)
+    redirect_to root_url
   end
 
   def edit
@@ -19,6 +19,6 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find_by_user_id(current_user.id)
     @profile.update_attributes(params[:profile])
-    redirect_to user_url(current_user)
+    redirect_to root_url
   end
 end

@@ -19,4 +19,8 @@ module SessionsHelper
   def require_user!
     redirect_to new_session_url unless logged_in?
   end
+
+  def require_no_current_user!
+    redirect_to root_url unless !logged_in?
+  end
 end

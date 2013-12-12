@@ -1,0 +1,35 @@
+<h1>News Feed</h1>
+
+<section class="sidebar">SIDEBAR
+
+  <header>
+    <h5><%= current_user.first_name + " " + current_user.last_name %></h5>
+    <h5><%= link_to "Edit Profile", edit_profile_url(current_user.profile.id) %></h5>
+  </header>
+
+  <div class="favorites">Favorites
+  <ul>
+    <li>News Feed</li>
+    <li>Messages</li>
+    <li>Events</li>
+    <li>Photos</li>
+  </ul>
+</section>
+
+
+<section class="main">MAIN BODY
+  <header class="update status">
+    <h5>Update Status</h5>
+    <form action="posts_url" method="post">
+      <input type="text" name="post[body]" value="">
+
+
+      <p><input type="submit" value="Post"></p>
+    </form>
+  </header>
+
+
+  <body class="newsfeed">
+    <h1>PUT SOME NEWS FEED STUFF HERE</h1>
+  </body>
+</section>
