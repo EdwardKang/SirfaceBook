@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
     else
       flash[:errors] = @profile.errors.full_messages
       render :new
+    end
   end
 
   def edit
