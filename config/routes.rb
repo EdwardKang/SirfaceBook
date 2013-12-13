@@ -17,4 +17,5 @@ FacebookLite::Application.routes.draw do
 
   resources :comments, only: [:edit, :update, :destroy]
   resources :friendships, only: [:create, :update, :destroy]
+  resources :likes, only: [:create, :destroy]
 end
