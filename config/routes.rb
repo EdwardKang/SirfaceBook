@@ -11,8 +11,8 @@ FacebookLite::Application.routes.draw do
   resources :profiles, only: [:new, :edit, :create, :update]
   root :to => 'home_pages#root'
 
-  resources :posts, only: [:new, :create, :edit, :update, :destroy] do
-    resources :comments, only: [:new, :create]
+  resources :posts, only: [:create, :update, :destroy] do
+    resources :comments, only: [:new, :create, :destroy]
   end
 
   resources :comments, only: [:edit, :update, :destroy]

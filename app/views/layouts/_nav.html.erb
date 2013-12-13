@@ -1,12 +1,18 @@
-<ul>
-  <li>
-    <input type="text" name="some_name" value="" id="some_name">
-  </li>
+<header class="header">
+  <div class="header-wrapper">
+    <nav class="nav-header">
+      <ul>
+        <li>
+          <input type="text" name="some_name" value="" id="some_name">
+        </li>
 
-  <li>Friend Requests</li>
-  <li>Inbox</li>
-  <li>Notifications</li>
-  <li><%= link_to "Home", root_url %></li>
-  <li><%= link_to current_user.first_name, wall_user_url(current_user) %></li>
-  <li><%= button_to "Logout", session_url, method: :delete %></li>
-</ul>
+        <li>Friend Requests</li>
+        <li>Inbox</li>
+        <li>Notifications</li>
+        <li><%= link_to "Home", root_url %></li>
+        <li><%= link_to current_user.first_name, wall_user_url(current_user) %></li>
+        <li><%= button_to "Logout", session_url, method: :delete %></li>
+      </ul>
+    </nav>
+  </div>
+</header>

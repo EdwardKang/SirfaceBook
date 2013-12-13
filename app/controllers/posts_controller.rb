@@ -7,4 +7,8 @@ class PostsController < ApplicationController
     @post.save
     redirect_to :back
   end
+
+  def destroy
+
+  end
 end
