@@ -1,0 +1,6 @@
+<% like = post.likes.where(user_id: current_user.id) %>
+<% if like.empty? %>
+  <%= render "layouts/like_post", post: post %>
+<% else %>
+  <%= button_to "Unlike", like_url(like[0]), method: :delete %>
+<% end %>

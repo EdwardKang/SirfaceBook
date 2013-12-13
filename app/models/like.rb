@@ -3,7 +3,7 @@ class Like < ActiveRecord::Base
   validate :like_comment_or_post
   validates_presence_of :user_id
   validates :user_id, uniqueness: { scope: :comment_id }
-  validates :user_id, uniqueness: { scope: :user_id }
+  validates :user_id, uniqueness: { scope: :post_id }
 
   belongs_to(
     :comment,
@@ -26,6 +26,4 @@ class Like < ActiveRecord::Base
       errors.add(:post_id, "post and comment id can't both exist")
     end
   end
-
-
 end

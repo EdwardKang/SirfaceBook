@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
   has_many(
     :likes,
     class_name: "Like",
-    foreign_key: :post_id,
+    foreign_key: :comment_id,
     primary_key: :id
   )
 end

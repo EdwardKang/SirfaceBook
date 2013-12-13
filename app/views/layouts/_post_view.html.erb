@@ -1,0 +1,35 @@
+<div class="post-header">
+  <% unless post.sender_id == post.receiver_id %>
+    <% sender = User.find(post.sender_id) %>
+    <%= "#{sender.first_name} #{sender.last_name}" %>
+    &rarr;
+  <% end %>
+
+  <% receiver = User.find(post.receiver_id) %>
+  <%= "#{receiver.first_name} #{receiver.last_name}" %>
+</div>
+
+<div class="post-body">
+  <%= post.body %>
+
+  <% if current_user.friends_ids.include?(receiver.id) %>
+    <%= render "layouts/like_button_post", post: post %>
+  <% end %>
+</div>
+
+<div class="post-comments">
+  <ul>
+    <% post.comments.each do |comment| %>
+      <li>
+        <%= comment.body %>
+        <%= render "layouts/like_button_comment", comment: comment %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<% if current_user.friends_ids.include?(receiver.id) %>
+  <div class="new-comment">
+    <%= render "layouts/comment", post: post %>
+  </div>
+<% end %>

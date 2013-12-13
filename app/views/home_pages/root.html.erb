@@ -26,6 +26,15 @@
 
 
   <body class="newsfeed">
-    <h1>PUT SOME NEWS FEED STUFF HERE</h1>
+    <h1>News Feed</h1>
+
+    <ul>
+      <% @news[(@news_feed_length * -1)..-1].reverse.each do |post| %>
+        <li>
+          <%= render "layouts/post_view", post: post %>
+        </li>
+      <% end %>
+    </ul>
+
   </body>
 </section>
