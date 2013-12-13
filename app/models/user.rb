@@ -48,8 +48,32 @@ class User < ActiveRecord::Base
   has_many :received_friends, through: :received_friendships, source: :friender
   has_many :initiated_friends, through: :initiated_friendships, source: :friendee
 
-  def is_friend?
-    
+  def friends
+    self.initiated_friendships.where(is_pending: false) + self.received_friendships.where(is_pending: false)
+  end
+
+  def no_requests?(user)
+    friendship = self.initiated_friendships.where(friendee_id: user.id) + self.received_friendships.where(friender_id: user.id)
+    friendship.empty? ? true : false
+  end
+
+  def initiated_friend_request(user)
+    friendship = self.initiated_friendships.where(friendee_id: user.id, is_pending: true)
+    friendship.empty? ? false : friendship[0]
+  end
+
+  def received_friend_request(user)
+    friendship = self.received_friendships.where(friender_id: user.id, is_pending: true)
+    friendship.empty? ? false : friendship[0]
+  end
+
+  def initiated_friend?(user)
+    !self.initiated_friendships.where(friendee_id: user.id).empty?
+  end
+
+  def is_friend(user)
+    friendship = self.received_friendships.where(friender_id: user.id) + self.initiated_friendships.where(friendee_id: user.id)
+    friendship[0]
   end
 
 

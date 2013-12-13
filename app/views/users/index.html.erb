@@ -1,13 +1,21 @@
 <% @users.each do |user| %>
-  <p>
-    <form action="<%= friendships_url %>" method="post">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <% received_friendship = current_user.received_friend_request(user) %>
+  <% initiated_friendship = current_user.initiated_friend_request(user) %>
 
-      <%= "#{user.first_name} #{user.last_name}" %>
-      <input type="hidden" name="friendship[friendee_id]" value="<%= user.id %>">
-      <input type="hidden" name="friendship[friender_id]" value="<%= current_user.id %>">
-      <input type="submit" value="Friend">
-    </form>
+  <p>
+    <% next if user.id == current_user.id %>
+
+    <%= "#{user.first_name} #{user.last_name}" %>
+    <% if current_user.no_requests?(user) %>
+      <%= render "layouts/friend", user: user %>
+    <% elsif initiated_friendship %>
+      <%= button_to "Cancel Request", friendship_url(initiated_friendship), method: :delete %>
+    <% elsif received_friendship %>
+      <%= render "layouts/accept_friend", user: user, url: friendship_url(received_friendship) %>
+      <%= button_to "Cancel Friend Request", friendship_url(received_friendship), method: :delete %>
+    <% else %>
+      <%= button_to "Unfriend", friendship_url(current_user.is_friend(user)), method: :delete %>
+    <% end %>
   </p>
 
 <% end %>
