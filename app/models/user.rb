@@ -45,6 +45,13 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many(
+    :comments,
+    class_name: "Comment",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+
   has_many :received_friends, through: :received_friendships, source: :friender
   has_many :initiated_friends, through: :initiated_friendships, source: :friendee
 

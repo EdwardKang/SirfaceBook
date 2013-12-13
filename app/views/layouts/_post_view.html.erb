@@ -1,8 +1,8 @@
 <div class="post-wrapper">
   <div class="original-post">
     <div class="post-header">
+        <% sender = User.find(post.sender_id) %>
         <% unless post.sender_id == post.receiver_id %>
-          <% sender = User.find(post.sender_id) %>
           <%= "#{sender.first_name} #{sender.last_name}" %>
           &rarr;
         <% end %>
@@ -13,6 +13,9 @@
 
     <div class="post-body">
       <%= post.body %>
+      <% if sender.id == current_user.id %>
+        <%= button_to "Delete Post", post_url(post), method: :delete %>
+      <% end %>
 
       <% if current_user.friends_ids.include?(receiver.id) %>
         <%= render "layouts/like_button_post", post: post %>
@@ -28,7 +31,16 @@
     <ul>
       <% post.comments.each do |comment| %>
         <li class="list-comment">
+          <% commenter = User.find(comment.user_id) %>
+          <p>
+            <%= commenter.first_name + " " + commenter.last_name %>
+          </p>
           <%= comment.body %>
+
+          <% if commenter.id == current_user.id %>
+            <%= button_to "Delete Comment", comment_url(comment), method: :delete %>
+          <% end %>
+
           <%= render "layouts/like_button_comment", comment: comment %>
 
           <% if comment.likes.count > 0 %>
