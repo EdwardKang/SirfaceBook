@@ -49,7 +49,16 @@ class User < ActiveRecord::Base
   has_many :initiated_friends, through: :initiated_friendships, source: :friendee
 
   def friends
-    self.initiated_friendships.where(is_pending: false) + self.received_friendships.where(is_pending: false)
+    friends = []
+    self.received_friends.each do |friend|
+      friends << friend unless friend.initiated_friendships.where(is_pending: false, friendee_id: self.id).empty?
+    end
+
+    self.initiated_friends.each do |friend|
+      friends << friend unless friend.received_friendships.where(is_pending: false, friender_id: self.id).empty?
+    end
+
+    friends
   end
 
   def no_requests?(user)
