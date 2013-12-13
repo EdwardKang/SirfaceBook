@@ -6,7 +6,8 @@
   </header>
 
   <body>
-    <div class="right">Basic Information
+    <div class="right">
+      <h2 class="table-header">Basic Information</h2>
       <table class="basic-info" cellpadding="5">
         <tr>
           <th>Birthday</th>
@@ -29,7 +30,9 @@
     </div>
 
 
-    <div class="left">Work and Education
+    <div class="left">
+      <h2v>Work and Education</h2>
+
       <table class="work-info" cellpadding="5">
         <%= render "optional_row", detail: @user.profile.high_school, title: "High School" %>
 

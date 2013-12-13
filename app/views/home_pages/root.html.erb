@@ -1,40 +1,41 @@
-<h1>News Feed</h1>
+<div class="body-wrapper">
+  <section class="sidebar">
 
-<section class="sidebar">SIDEBAR
+    <header class="sidebar-header">
+      <h2><%= current_user.first_name + " " + current_user.last_name %></h5>
+      <h5><%= link_to "Edit Profile", edit_profile_url(current_user.profile.id) %></h5>
+    </header>
 
-  <header>
-    <h5><%= current_user.first_name + " " + current_user.last_name %></h5>
-    <h5><%= link_to "Edit Profile", edit_profile_url(current_user.profile.id) %></h5>
-  </header>
-
-  <div class="favorites">Favorites
-  <ul>
-    <li><%= link_to "News Feed", root_url %></li>
-    <li>Messages</li>
-    <li>Events</li>
-    <li>Photos</li>
-    <li><%= link_to "List of Users", users_url %></li>
-  </ul>
-</section>
-
-
-<section class="main">MAIN BODY
-  <header class="update status">
-    <h5>Update Status</h5>
-    <%= render "layouts/new_status" %>
-  </header>
+    <div class="favorites">Favorites
+      <ul class="sidebar-list">
+        <li><%= link_to "News Feed", root_url %></li>
+        <li>Messages</li>
+        <li>Events</li>
+        <li>Photos</li>
+        <li><%= link_to "List of Users", users_url %></li>
+      </ul>
+    </div>
+  </section>
 
 
-  <body class="newsfeed">
-    <h1>News Feed</h1>
+  <section class="main">
+    <header class="update-status">
+      <h5>Update Status</h5>
+      <%= render "layouts/new_status" %>
+    </header>
 
-    <ul>
-      <% @news[(@news_feed_length * -1)..-1].reverse.each do |post| %>
-        <li>
-          <%= render "layouts/post_view", post: post %>
-        </li>
-      <% end %>
-    </ul>
 
-  </body>
-</section>
+    <body class="newsfeed">
+      <h1>News Feed</h1>
+
+      <ul>
+        <% @news[(@news_feed_length * -1)..-1].reverse.each do |post| %>
+          <li>
+            <%= render "layouts/post_view", post: post %>
+          </li>
+        <% end %>
+      </ul>
+
+    </body>
+  </section>
+</div>

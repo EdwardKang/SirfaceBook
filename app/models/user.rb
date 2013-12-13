@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   end
 
   def friends_ids
-    friend_ids = []
+    friend_ids = [self.id]
     self.friends.each do |friend|
       friend_ids << friend.id
     end

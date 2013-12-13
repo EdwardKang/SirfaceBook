@@ -1,0 +1,76 @@
+header, body, div, nav, ul, li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.header {
+  background: #00F;
+}
+
+
+div.header-wrapper {
+  width: 100%;
+}
+
+.header-list {
+  list-style: none;
+}
+
+.header-list > li {
+  float: left;
+  padding: 5px 10px;
+  color: #FFF;
+  border: 1px;
+}
+
+.header-list li a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+.logout {
+  width: 100px;
+  float: right;
+}
+
+.logout input {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  width: 100px;
+  height: 30px;
+  font-size: 1em;
+}
+
+.post-header {
+  font-size: 1.3em;
+}
+
+.post-wrapper {
+  background: #a7d3ff;
+  width: 500px;
+  margin: auto;
+}
+
+.post-comments {
+  padding-left: 20px;
+  padding-top: 15px;
+}
+
+.new-comment {
+  padding-left: 20px;
+}
+
+.original-post {
+  border-bottom: 2px solid grey;
+}

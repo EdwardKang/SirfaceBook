@@ -1,35 +1,47 @@
-<div class="post-header">
-  <% unless post.sender_id == post.receiver_id %>
-    <% sender = User.find(post.sender_id) %>
-    <%= "#{sender.first_name} #{sender.last_name}" %>
-    &rarr;
-  <% end %>
+<div class="post-wrapper">
+  <div class="original-post">
+    <div class="post-header">
+        <% unless post.sender_id == post.receiver_id %>
+          <% sender = User.find(post.sender_id) %>
+          <%= "#{sender.first_name} #{sender.last_name}" %>
+          &rarr;
+        <% end %>
 
-  <% receiver = User.find(post.receiver_id) %>
-  <%= "#{receiver.first_name} #{receiver.last_name}" %>
-</div>
+        <% receiver = User.find(post.receiver_id) %>
+        <%= "#{receiver.first_name} #{receiver.last_name}" %>
+    </div>
 
-<div class="post-body">
-  <%= post.body %>
+    <div class="post-body">
+      <%= post.body %>
+
+      <% if current_user.friends_ids.include?(receiver.id) %>
+        <%= render "layouts/like_button_post", post: post %>
+      <% end %>
+
+      <% if post.likes.count > 0 %>
+        <%= pluralize(post.likes.count, "like") %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="post-comments">
+    <ul>
+      <% post.comments.each do |comment| %>
+        <li>
+          <%= comment.body %>
+          <%= render "layouts/like_button_comment", comment: comment %>
+
+          <% if comment.likes.count > 0 %>
+            <%= pluralize(comment.likes.count, "like") %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 
   <% if current_user.friends_ids.include?(receiver.id) %>
-    <%= render "layouts/like_button_post", post: post %>
+    <div class="new-comment">
+      <%= render "layouts/comment", post: post %>
+    </div>
   <% end %>
 </div>
-
-<div class="post-comments">
-  <ul>
-    <% post.comments.each do |comment| %>
-      <li>
-        <%= comment.body %>
-        <%= render "layouts/like_button_comment", comment: comment %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
-<% if current_user.friends_ids.include?(receiver.id) %>
-  <div class="new-comment">
-    <%= render "layouts/comment", post: post %>
-  </div>
-<% end %>

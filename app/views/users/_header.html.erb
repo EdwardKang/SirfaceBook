@@ -1,8 +1,16 @@
-<section class="wall header">
+<section class="wall-header">
   <h3><%= @user.first_name + " " + @user.last_name %></h3>
-  <h5><%= button_to "Edit Profile", edit_profile_url(current_user.profile.id), method: :get %></h5>
+  <h5>
+    <% if current_user.id == @user.id %>
+      <%= button_to "Edit Profile", edit_profile_url(current_user.profile.id), method: :get %>
+    <% elsif current_user.friends_ids.include?(@user.id) %>
+      <%= button_to "Unfriend", friendship_url(current_user.is_friend(@user)), method: :delete %>
+    <% else %>
+      <%= render "layouts/friend", user: @user %>
+    <% end %>
+  </h5>
 
-  <nav>
+  <nav class="wall-nav group">
     <ul>
       <li><%= link_to "Wall", wall_user_url(@user.id) %></li>
       <li><%= link_to "Photos", photos_user_url(@user.id) %></li>
