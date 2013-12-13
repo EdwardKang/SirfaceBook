@@ -5,7 +5,7 @@
   <p>
     <% next if user.id == current_user.id %>
 
-    <%= "#{user.first_name} #{user.last_name}" %>
+    <%= link_to "#{user.first_name} #{user.last_name}", wall_user_url(user) %>
     <% if current_user.no_requests?(user) %>
       <%= render "layouts/friend", user: user %>
     <% elsif initiated_friendship %>

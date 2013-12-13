@@ -5,7 +5,14 @@ class Comment < ActiveRecord::Base
   belongs_to(
     :post,
     class_name: "Post",
-    foreign_key: "post_id",
-    primary_key: "id"
+    foreign_key: :post_id,
+    primary_key: :id
+  )
+
+  has_many(
+    :likes,
+    class_name: "Like",
+    foreign_key: :post_id,
+    primary_key: :id
   )
 end

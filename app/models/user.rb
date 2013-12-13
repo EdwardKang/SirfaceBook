@@ -54,11 +54,21 @@ class User < ActiveRecord::Base
       friends << friend unless friend.initiated_friendships.where(is_pending: false, friendee_id: self.id).empty?
     end
 
+
     self.initiated_friends.each do |friend|
       friends << friend unless friend.received_friendships.where(is_pending: false, friender_id: self.id).empty?
     end
 
     friends
+  end
+
+  def friends_ids
+    friend_ids = []
+    self.friends.each do |friend|
+      friend_ids << friend.id
+    end
+
+    friend_ids
   end
 
   def no_requests?(user)

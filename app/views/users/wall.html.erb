@@ -9,6 +9,7 @@
       <% user_college = @user.profile.college %>
       <li>Studied at <%= user_college == "" ? @user.profile.high_school : user_college %></li>
     </ul>
+
   </body>
 </section>
 
@@ -17,24 +18,53 @@
 </section>
 
 <section class="update-status">
+  <% if @user.id == current_user.id %>
     <h5>Update Status</h5>
     <%= render "layouts/new_status" %>
+  <% elsif current_user.friends_ids.include?(@user.id) %>
+    <h5>Post</h5>
+    <%= render "layouts/new_post", user: @user %>
+  <% end %>
 </section>
 
 <section class="main-wall">
   <body>
     <ul>
-      <% @user.posts.each do |post| %>
+      <% @user.received_posts.each do |post| %>
         <li>
           <div>
+            <% unless post.sender_id == @user.id %>
+              <% sender = User.find(post.sender_id) %>
+              <%= "#{sender.first_name} #{sender.last_name}" %>
+              &rarr;
+            <% end %>
+
             <%= "#{@user.first_name} #{@user.last_name}" %>
           </div>
 
-          <div>
+          <div class="post-body">
             <%= post.body %>
           </div>
+
+          <div class="post-comments">
+            <ul>
+              <% post.comments.each do |comment| %>
+                <li>
+                  <%= comment.body %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+
+          <% if current_user.friends_ids.include?(@user.id) %>
+            <div class="new-comment">
+              <%= render "layouts/comment", post: post %>
+            </div>
+          <% end %>
+
         </li>
       <% end %>
     </ul>
   </body>
 </section>
+
