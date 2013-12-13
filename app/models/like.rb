@@ -2,8 +2,7 @@ class Like < ActiveRecord::Base
   attr_accessible :comment_id, :post_id, :user_id
   validate :like_comment_or_post
   validates_presence_of :user_id
-  validates :user_id, uniqueness: { scope: :comment_id }
-  validates :user_id, uniqueness: { scope: :post_id }
+
 
   belongs_to(
     :comment,

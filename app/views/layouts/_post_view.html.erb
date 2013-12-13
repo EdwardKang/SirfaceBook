@@ -27,7 +27,7 @@
   <div class="post-comments">
     <ul>
       <% post.comments.each do |comment| %>
-        <li>
+        <li class="list-comment">
           <%= comment.body %>
           <%= render "layouts/like_button_comment", comment: comment %>
 
