@@ -2,7 +2,7 @@
 	<ul class="message-list">
 		<% @messages.each do |message| %>
 			<% sender = message.sender %>
-			<% receiver = message.reveiver %>
+			<% receiver = message.receiver %>
 			
 			<li>
 				<%= "#{sender.first_name} #{sender.last_name}" %> &rarr;
@@ -13,4 +13,4 @@
 	</ul>
 </section>
 
-<%= render "add_message" %>
+<%= render "create_message" %>

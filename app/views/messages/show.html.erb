@@ -1,13 +1,31 @@
-<section class="message">
-	<% sender = @message.sender %>
-	<% receiver = @message.reveiver %>
+<div class="message-group">
+	<section class="message">
+		<% parent_sender = @message.sender %>
+		<% parent_receiver = @message.receiver %>
 	
-	<header>
-		<%= "#{sender.first_name} #{sender.last_name}" %> &rarr;
-		<%= "#{receiver.first_name} #{receiver.last_name}" %> 
-	</header>
+		<header>
+			<%= "#{parent_sender.first_name} #{parent_sender.last_name}" %>
+		</header>
 	
-	<article class="message-body">
-		<%= @message.text %>
-	</article>
-</section>
+		<article class="message-body">
+			<%= @message.text %>
+		</article>
+	</section>
+	
+	<% @message.children.each do |message| %>
+		<% sender = message.sender %>
+		
+		<section class"message">
+			<header>
+				<%= "#{sender.first_name} #{sender.last_name}" %>
+			</header>
+			
+			<article class="message-body">
+				<%= message.text %>
+			</article>
+		</section>
+	<% end %>
+</div>
+
+<% receiver = parent_sender.id == current_user.id ? parent_receiver : parent_sender %>
+<%= render "add_message", parent: @message, receiver: receiver %>
