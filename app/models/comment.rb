@@ -16,10 +16,5 @@ class Comment < ActiveRecord::Base
     primary_key: :id
   )
 
-  has_many(
-    :likes,
-    class_name: "Like",
-    foreign_key: :comment_id,
-    primary_key: :id
-  )
+  has_many :likes, as: :likeable
 end

@@ -1,21 +1,29 @@
-<% @users.each do |user| %>
-  <% received_friendship = current_user.received_friend_request(user) %>
-  <% initiated_friendship = current_user.initiated_friend_request(user) %>
+<% current_user_requests = current_user.user_requests %>
+<% users_pending_initiated_friend_requests = current_user.pending_initiated_friend_requests %>
+<% users_pending_received_friend_requests = current_user.pending_received_friend_requests %>
 
+<% @users.each do |user| %>
   <p>
     <% next if user.id == current_user.id %>
 
+		<% received_friendship = users_pending_received_friend_requests.select { |friendship| friendship.friender_id == user.id }.first %>
+		<% initiated_friendship = users_pending_initiated_friend_requests.select { |friendship| friendship.friendee_id == user.id }.first %>
+		<% valid_friendship = current_user_requests.select { |friendship| friendship.friendee_id == user.id || friendship.friender_id == user.id }.first %>
+
     <%= link_to "#{user.first_name} #{user.last_name}", wall_user_url(user) %>
-    <% if current_user.no_requests?(user) %>
-      <%= render "layouts/friend", user: user %>
-    <% elsif initiated_friendship %>
-      <%= button_to "Cancel Request", friendship_url(initiated_friendship), method: :delete %>
-    <% elsif received_friendship %>
-      <%= render "layouts/accept_friend", user: user, url: friendship_url(received_friendship) %>
-      <%= button_to "Cancel Friend Request", friendship_url(received_friendship), method: :delete %>
-    <% else %>
-      <%= button_to "Unfriend", friendship_url(current_user.is_friend(user)), method: :delete %>
-    <% end %>
+    
+		
+		
+		<% if valid_friendship %>
+			<%= button_to "Unfriend", friendship_url(valid_friendship), method: :delete %>
+		<% elsif received_friendship %>
+			<%= render "layouts/accept_friend", user: user, url: friendship_url(received_friendship) %>
+			<%= button_to "Cancel Friend Request", friendship_url(received_friendship), method: :delete %>
+		<% elsif initiated_friendship %>
+			<%= button_to "Cancel Request", friendship_url(initiated_friendship), method: :delete %>
+		<% else %>
+			<%= render "layouts/friend", user: user %>
+		<% end %>
   </p>
 
 <% end %>

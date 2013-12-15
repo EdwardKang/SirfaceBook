@@ -78,28 +78,16 @@ class User < ActiveRecord::Base
     friend_ids
   end
 
-  def no_requests?(user)
-    friendship = self.initiated_friendships.where(friendee_id: user.id) + self.received_friendships.where(friender_id: user.id)
-    friendship.empty? ? true : false
+  def user_requests
+    self.initiated_friendships.where(is_pending: false) + self.received_friendships.where(is_pending: false)
   end
-
-  def initiated_friend_request(user)
-    friendship = self.initiated_friendships.where(friendee_id: user.id, is_pending: true)
-    friendship.empty? ? false : friendship[0]
+  
+  def pending_initiated_friend_requests
+    self.initiated_friendships.where(is_pending: true)
   end
-
-  def received_friend_request(user)
-    friendship = self.received_friendships.where(friender_id: user.id, is_pending: true)
-    friendship.empty? ? false : friendship[0]
-  end
-
-  def initiated_friend?(user)
-    !self.initiated_friendships.where(friendee_id: user.id).empty?
-  end
-
-  def is_friend(user)
-    friendship = self.received_friendships.where(friender_id: user.id) + self.initiated_friendships.where(friendee_id: user.id)
-    friendship[0]
+  
+  def pending_received_friend_requests
+    self.received_friendships.where(is_pending: true)
   end
 
 

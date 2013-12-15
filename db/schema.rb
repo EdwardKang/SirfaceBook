@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(:version => 20131213205215) do
   end
 
   create_table "likes", :force => true do |t|
-    t.integer  "post_id"
-    t.integer  "comment_id"
+    t.integer  "likeable_id"
+    t.string   "likeable_type"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "messages", :force => true do |t|
