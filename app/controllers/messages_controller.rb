@@ -14,6 +14,10 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(params[:message])
     @message.save
-    redirect_to :back
+    if @message.parent_id == nil
+      redirect_to @message
+    else
+      redirect_to message_url(@message.parent_id)
+    end
   end
 end

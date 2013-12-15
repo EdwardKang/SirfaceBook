@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131215174216) do
+ActiveRecord::Schema.define(:version => 20131213205215) do
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
@@ -39,11 +39,11 @@ ActiveRecord::Schema.define(:version => 20131215174216) do
 
   create_table "messages", :force => true do |t|
     t.integer  "sender_id"
-    t.integer  "recevier_id"
+    t.integer  "receiver_id"
     t.string   "text"
+    t.integer  "parent_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "parent_id"
   end
 
   create_table "posts", :force => true do |t|

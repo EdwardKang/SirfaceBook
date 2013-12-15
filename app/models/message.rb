@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-  attr_accessible :recevier_id, :sender_id, :text, :parent_id
+  attr_accessible :receiver_id, :sender_id, :text, :parent_id
   
   validates_presence_of :receiver_id, :sender_id, :text
   
