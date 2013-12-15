@@ -77,6 +77,15 @@ class User < ActiveRecord::Base
 
     friend_ids
   end
+  
+  def pending_received_friends
+    pending_friends = []
+    self.pending_received_friend_requests.each do |friendship|
+      pending_friends << User.find(friendship.friender_id)
+    end
+    
+    pending_friends
+  end
 
   def user_requests
     self.initiated_friendships.where(is_pending: false) + self.received_friendships.where(is_pending: false)

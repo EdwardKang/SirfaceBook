@@ -9,4 +9,7 @@ class HomePagesController < ApplicationController
     @news_feed_length = max_length if max_length < @news_feed_length
     render :root
   end
+  
+  def friend_req
+  end
 end
