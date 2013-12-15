@@ -4,13 +4,13 @@
   <header class="about-header">About
   </header>
 
-  <body>
+  <article>
     <ul>
       <% user_college = @user.profile.college %>
       <li>Studied at <%= user_college == "" ? @user.profile.high_school : user_college %></li>
     </ul>
 
-  </body>
+  </article>
 </section>
 
 <section class="brief-photos">
@@ -29,7 +29,7 @@
 
 <section class="main-wall">
   <header><h1>Wall</h1></header>
-  <body>
+  <article>
     <ul>
       <% @user.received_posts.each do |post| %>
         <li>
@@ -37,6 +37,6 @@
         </li>
       <% end %>
     </ul>
-  </body>
+  </article>
 </section>
 

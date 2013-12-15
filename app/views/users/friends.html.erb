@@ -4,4 +4,19 @@
   <header>
     <h3>Friends</h3>
   </header>
+	
+	<article>
+		<ul>
+			<% @user.friends.each do |friend| %>
+			
+			<li>
+				<%= link_to "#{friend.first_name} #{friend.last_name}", wall_user_url(friend) %>
+			</li>
+			
+			<% end %>
+		</ul>
+		
+		
+	</article>
+		
 </section>
