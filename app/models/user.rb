@@ -30,6 +30,20 @@ class User < ActiveRecord::Base
     foreign_key: :receiver_id,
     primary_key: :id
   )
+  
+  has_many(
+    :messages,
+    class_name: "Message",
+    foreign_key: :sender_id,
+    primary_key: :receiver_id
+  )
+  
+  has_many(
+    :received_messages,
+    class_name: "Message",
+    foreign_key: :receiver_id,
+    primary_key: :id
+  )
 
   has_many(
     :initiated_friendships,
