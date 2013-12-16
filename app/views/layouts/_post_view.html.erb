@@ -13,6 +13,7 @@
 
     <div class="post-body">
       <%= post.body %>
+      <%= image_tag(post.photos.first.pic(:big), class: "post-photo") %>
       <% if sender.id == current_user.id %>
         <%= button_to "Delete Post", post_url(post), method: :delete %>
       <% end %>

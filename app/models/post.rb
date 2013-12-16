@@ -23,6 +23,13 @@ class Post < ActiveRecord::Base
     foreign_key: :receiver_id,
     primary_key: :id
   )
-  
+
+  has_many(
+    :photos,
+    class_name: "Photo",
+    foreign_key: :post_id,
+    primary_key: :id
+  )
+
   has_many :likes, as: :likeable
 end

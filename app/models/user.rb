@@ -30,14 +30,14 @@ class User < ActiveRecord::Base
     foreign_key: :receiver_id,
     primary_key: :id
   )
-  
+
   has_many(
     :messages,
     class_name: "Message",
     foreign_key: :sender_id,
     primary_key: :receiver_id
   )
-  
+
   has_many(
     :received_messages,
     class_name: "Message",
@@ -62,6 +62,13 @@ class User < ActiveRecord::Base
   has_many(
     :comments,
     class_name: "Comment",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+
+  has_many(
+    :photos,
+    class_name: "Photo",
     foreign_key: :user_id,
     primary_key: :id
   )
@@ -91,24 +98,24 @@ class User < ActiveRecord::Base
 
     friend_ids
   end
-  
+
   def pending_received_friends
     pending_friends = []
     self.pending_received_friend_requests.each do |friendship|
       pending_friends << User.find(friendship.friender_id)
     end
-    
+
     pending_friends
   end
 
   def user_requests
     self.initiated_friendships.where(is_pending: false) + self.received_friendships.where(is_pending: false)
   end
-  
+
   def pending_initiated_friend_requests
     self.initiated_friendships.where(is_pending: true)
   end
-  
+
   def pending_received_friend_requests
     self.received_friendships.where(is_pending: true)
   end

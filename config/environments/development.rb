@@ -34,13 +34,13 @@ FacebookLite::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-  
+
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => ENV["Facebook-lite"],
-      :access_key_id => ENV["AKIAJXYS7QQBUUYXO6PQ"],
-      :secret_access_key => ENV["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"],
+      :bucket => ENV["AWS_BUCKET"],
+      :access_key_id => ENV["AWS_ACCESS_KEY"],
+      :secret_access_key => ENV["AWS_SECRET_KEY"],
       :s3_host_name => 's3.amazonaws.com' # or whatever your region host name is
     }
   }

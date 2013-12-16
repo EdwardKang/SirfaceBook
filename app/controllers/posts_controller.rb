@@ -4,6 +4,13 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @post.sender_id = current_user.id
+
+    if params[:photo]
+      params[:photo][:user_id] = current_user.id
+      params[:photo][:is_profile_pic] = false
+      @post.photos.new(params[:photo])
+    end
+
     @post.save
     redirect_to :back
   end
