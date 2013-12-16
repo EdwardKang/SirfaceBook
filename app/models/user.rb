@@ -76,6 +76,10 @@ class User < ActiveRecord::Base
   has_many :received_friends, through: :received_friendships, source: :friender
   has_many :initiated_friends, through: :initiated_friendships, source: :friendee
 
+  def profile_photo
+    self.photos.where(is_profile_pic: true)[0]
+  end
+
   def friends
     friends = []
     self.received_friends.each do |friend|

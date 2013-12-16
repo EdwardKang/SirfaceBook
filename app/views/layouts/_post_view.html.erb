@@ -2,6 +2,9 @@
   <div class="original-post">
     <div class="post-header">
         <% sender = User.find(post.sender_id) %>
+        <% temp_profile_url = sender.profile_photo ? sender.profile_photo.pic : "default_profile_pic.jpeg" %>
+        <%= image_tag(temp_profile_url, class: "post-header-photo") %>
+
         <% unless post.sender_id == post.receiver_id %>
           <%= "#{sender.first_name} #{sender.last_name}" %>
           &rarr;
@@ -12,8 +15,14 @@
     </div>
 
     <div class="post-body">
+      <% photo = post.photos.first %>
+
       <%= post.body %>
-      <%= image_tag(post.photos.first.pic(:big), class: "post-photo") %>
+
+      <% if photo %>
+        <%= link_to image_tag(photo.pic, class: "post-photo"), photo_url(photo) %>
+      <% end %>
+
       <% if sender.id == current_user.id %>
         <%= button_to "Delete Post", post_url(post), method: :delete %>
       <% end %>
@@ -34,6 +43,8 @@
         <li class="list-comment">
           <% commenter = User.find(comment.user_id) %>
           <p>
+            <% temp_profile_url = commenter.profile_photo ? commenter.profile_photo.pic : "default_profile_pic.jpeg" %>
+            <%= image_tag(temp_profile_url, class: "comment-header-photo") %>
             <%= commenter.first_name + " " + commenter.last_name %>
           </p>
           <%= comment.body %>

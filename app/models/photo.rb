@@ -2,9 +2,12 @@ class Photo < ActiveRecord::Base
   attr_accessible :user_id, :pic, :is_profile_pic, :post_id
 
   validates :pic, :attachment_presence => true
+  validates_presence_of :user_id
+  validates :is_profile_pic, inclusion: { in: [true, false] }
 
   has_attached_file :pic, :styles => {
           :big => "600x600>",
+          :profile => "400x400#",
           :medium => "50x50#",
           :smaller => "30x30#"
         }
@@ -23,4 +26,5 @@ class Photo < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many :likes, as: :likeable
 end

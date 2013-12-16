@@ -6,12 +6,12 @@
       <h5><%= link_to "Edit Profile", edit_profile_url(current_user.profile.id) %></h5>
     </header>
 
-    <div class="favorites">Favorites
+    <div class="favorites">
       <ul class="sidebar-list">
         <li><%= link_to "News Feed", root_url %></li>
         <li><%= link_to "Messages", messages_url %></li>
         <li>Events</li>
-        <li>Photos</li>
+        <li><%= link_to "Photo", photos_user_url(current_user) %></li>
         <li><%= link_to "List of Users", users_url %></li>
       </ul>
     </div>

@@ -2,10 +2,5 @@
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="text" name="post[body]" placeholder="Post on Wall..">
   <input type="hidden" name="post[receiver_id]" value="<%= user.id %>">
-
-  <%= form_for :photo, :html => { :multipart => true } do |form| %>
-    <%= form.file_field :pic %>
-  <% end %>
-
   <p><input type="submit" value="Post"></p>
 </form>

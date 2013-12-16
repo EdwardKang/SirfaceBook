@@ -4,4 +4,14 @@
   <header>
     <h3>Photos</h3>
   </header>
+
+  <article>
+    <ul class="user-photos">
+      <% @user.photos.each do |photo| %>
+      <li>
+        <%= image_tag(photo.pic, class: "photo-index-view") %>
+      </li>
+      <% end %>
+    </ul>
+  </article>
 </section>

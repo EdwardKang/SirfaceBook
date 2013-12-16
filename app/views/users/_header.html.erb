@@ -7,6 +7,8 @@
 		<% valid_friendship = current_user_requests.select { |friendship| friendship.friendee_id == @user.id || friendship.friender_id == @user.id }.first %>
 
 <section class="wall-header">
+  <% temp_profile_url = @user.profile_photo ? @user.profile_photo.pic : "default_profile_pic.jpeg" %>
+  <%= image_tag(temp_profile_url, class: "post-header-photo") %>
   <h3><%= @user.first_name + " " + @user.last_name %></h3>
   <h5>
     <% if current_user.id == @user.id %>
