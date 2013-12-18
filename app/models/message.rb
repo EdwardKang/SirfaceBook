@@ -30,4 +30,6 @@ class Message < ActiveRecord::Base
     foreign_key: :receiver_id,
     primary_key: :id
   )
+  
+  has_many :notifications, as: :notifiable, dependent: :destroy
 end

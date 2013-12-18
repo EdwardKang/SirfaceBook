@@ -11,6 +11,7 @@ FacebookLite::Application.routes.draw do
   resources :profiles, only: [:new, :edit, :create, :update]
   root :to => 'home_pages#root'
   get "/friend-requests", to: 'home_pages#friend_req'
+  get "/notifications", to: 'home_pages#notifications'
 
 
   resources :posts, only: [:create, :update, :destroy] do

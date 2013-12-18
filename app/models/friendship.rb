@@ -17,4 +17,6 @@ class Friendship < ActiveRecord::Base
     foreign_key: :friendee_id,
     primary_key: :id
   )
+  
+  has_many :notifications, as: :notifiable, dependent: :destroy
 end

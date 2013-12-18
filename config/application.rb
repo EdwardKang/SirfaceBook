@@ -59,5 +59,7 @@ module FacebookLite
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    config.active_record.observers = :notify_observer
   end
 end

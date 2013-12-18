@@ -14,62 +14,85 @@ class User < ActiveRecord::Base
     :profile,
     class_name: 'Profile',
     foreign_key: :user_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
     :posts,
     class_name: "Post",
     foreign_key: :sender_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
     :received_posts,
     class_name: "Post",
     foreign_key: :receiver_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
     :messages,
     class_name: "Message",
     foreign_key: :sender_id,
-    primary_key: :receiver_id
+    primary_key: :receiver_id,
+    dependent: :destroy
   )
 
   has_many(
     :received_messages,
     class_name: "Message",
     foreign_key: :receiver_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
     :initiated_friendships,
     class_name: "Friendship",
     foreign_key: :friender_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
     :received_friendships,
     class_name: "Friendship",
     foreign_key: :friendee_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
     :comments,
     class_name: "Comment",
     foreign_key: :user_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
     :photos,
     class_name: "Photo",
     foreign_key: :user_id,
+    primary_key: :id,
+    dependent: :destroy
+  )
+  
+  has_many(
+    :notifications,
+    class_name: "Notification",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+  
+  has_many(
+    :sent_notifications,
+    class_name: "Notification",
+    foreign_key: :sender_id,
     primary_key: :id
   )
 

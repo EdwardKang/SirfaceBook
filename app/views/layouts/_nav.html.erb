@@ -4,7 +4,7 @@
       <ul class="header-list">
         <li><%= link_to "Friend Requests", "/friend-requests" %></li>
         <li><%= link_to "Inbox", messages_url %></li>
-        <li>Notifications</li>
+        <li><%= link_to "Notifications", "/notifications" %></li>
         <li><%= link_to "Home", root_url %></li>
         <li><%= link_to current_user.first_name, wall_user_url(current_user) %></li>
       </ul>

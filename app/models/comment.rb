@@ -17,4 +17,5 @@ class Comment < ActiveRecord::Base
   )
 
   has_many :likes, as: :likeable
+  has_many :notifications, as: :notifiable, dependent: :destroy
 end

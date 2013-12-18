@@ -7,7 +7,8 @@ class Post < ActiveRecord::Base
     :comments,
     class_name: "Comment",
     foreign_key: :post_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   belongs_to(
@@ -28,8 +29,10 @@ class Post < ActiveRecord::Base
     :photos,
     class_name: "Photo",
     foreign_key: :post_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many :likes, as: :likeable
+  has_many :notifications, as: :notifiable, dependent: :destroy
 end
