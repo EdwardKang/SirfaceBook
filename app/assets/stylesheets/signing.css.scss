@@ -1,0 +1,91 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sign-in, .sign-up {
+  border: 2px solid black;
+  border-radius: 25px;
+  background-color: #a7d3ff;
+}
+
+.sign-in h2 {
+  padding: 20px 0;
+  font-size: 1.5em;
+  width: 110px;
+  margin: auto;
+  font-weight: bold;
+}
+.sign-in-input {
+  width: 180px;
+  margin-left: 40px;
+}
+
+.sign-in-page, .sign-up-page {
+  margin: auto;
+  padding: 0 30px;
+  width: 270px;
+  position: relative;
+  top: 200px;
+}
+
+.sign-in-submit {
+  margin-left: 40px;
+  width: 70px;
+  font: inherit;
+  font-weight: bold;
+}
+
+.sign-in-submit:hover {
+  cursor: pointer;
+}
+
+.sign-up-button{
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  width: 190px;
+  padding-top: 10px;
+  margin-left: 40px;
+  color: blue;
+  font-size: 1em;
+}
+
+.sign-up-button:hover {
+  text-decoration: underline;
+}
+
+.sign-up-page h2 {
+  padding: 20px 0;
+  font-size: 1.8em;
+  width: 100px;
+  margin: auto;
+  font-weight: bold;
+}
+
+.birth-date {
+  padding-top: 10px;
+  font-size: 1em;
+  margin-left: 40px;
+}
+
+.gender {
+  padding-top: 10px;
+  margin-left: 40px;
+}
+
+.sign-in-button {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  width: 190px;
+  padding-top: 10px;
+  margin-left: 40px;
+  color: blue;
+  font-size: 0.8em;
+}
+
+.sign-in-button:hover {
+  text-decoration: underline;
+}

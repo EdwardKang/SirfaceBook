@@ -6,10 +6,6 @@ class Photo < ActiveRecord::Base
   validates :is_profile_pic, inclusion: { in: [true, false] }
 
   has_attached_file :pic, :styles => {
-          :big => "600x600>",
-          :profile => "400x400#",
-          :medium => "50x50#",
-          :smaller => "30x30#"
         }
 
   belongs_to(

@@ -1,3 +1,60 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post-wrapper {
+  background: #a7d3ff;
+  width: 500px;
+  margin: auto;
+}
+
+.header-photo {
+  float: left;
+}
+
+.everything-right {
+  float: left;
+  width: 440px;
+}
+
+.post-header {
+  margin-left: 10px;
+}
+
+.post-body {
+  margin-left: 13px;
+}
+
+.post-header-photo {
+  width: 60px;
+  height: 60px;
+}
+
+.post-header a {
+  font-weight: bold;
+  text-decoration: none;
+  color: blue;
+}
+
+.post-body-photo {
+  padding-top: 40px;
+  width: 400px;
+  margin: auto;
+}
+
+.post-photo {
+  width: 350px;
+}
+
+.new-comment {
+  padding-left: 20px;
+}
+
+.original-post {
+  border-bottom: 2px solid grey;
+}
+
+.list-comment {
+  border-bottom: 2px solid grey;
+  padding: 15px 0 20px 15px;
+}

@@ -81,14 +81,14 @@ class User < ActiveRecord::Base
     primary_key: :id,
     dependent: :destroy
   )
-  
+
   has_many(
     :notifications,
     class_name: "Notification",
     foreign_key: :user_id,
     primary_key: :id
   )
-  
+
   has_many(
     :sent_notifications,
     class_name: "Notification",
