@@ -5,8 +5,12 @@
 		<ul>
 			<% @notifications.reverse.each do |notification| %>
 			<% notifiable_type = notification.notifiable_type %>
+      <% sender = notification.sender %>
 			<li>
-				<%= link_to "#{notification.sender.first_name} #{notification.sender.last_name}", wall_user_url(notification.sender) %>
+        <% temp_profile_url = sender.profile_photo ? sender.profile_photo.pic : "default_profile_pic.jpeg" %>
+        <%= image_tag(temp_profile_url, class: "notification-photo") %>
+				<%= link_to "#{sender.first_name} #{sender.last_name}", wall_user_url(sender) %>
+
 				<% if notifiable_type == "Post" %>
 					has sent you a
 					<%= link_to "post", wall_user_url(current_user) %>
@@ -16,8 +20,10 @@
 				<% elsif notifiable_type == "Friendship" %>
 					<% if notification.notifiable.is_pending == true %>
 						has sent you a <%= link_to "friend request", "/friend-requests" %>
-					<% else %>
+					<% elsif notification.notifiable.friendee_id != current_user.id %>
 						has confirmed your <b>friend request</b>
+          <% else %>
+            and you are now <b>friends</b>
 					<% end %>
 				<% elsif notifiable_type == "Comment" %>
 					has commented on your
@@ -29,7 +35,7 @@
 							likes your comment on
 							<%= link_to "your wall", wall_user_url(liked_obj.post.receiver) %>
 						<% else %>
-							likes your comment on 
+							likes your comment on
 							<%= link_to "#{liked_obj.post.receiver.first_name}'s wall", wall_user_url(liked_obj.post.receiver) %>
 						<% end %>
 					<% elsif liked_obj.class.name == "Post" %>
@@ -37,13 +43,15 @@
 							likes a post on
 							<%= link_to "your wall", wall_user_url(liked_obj.post.receiver) %>
 						<% else %>
-							likes your post on 
+							likes your post on
 							<%= link_to "#{liked_obj.post.receiver.first_name}'s wall", wall_user_url(liked_obj.post.receiver) %>
 						<% end %>
 					<% end %>
 				<% end %>
-			</li>
-			
+
+        <%= button_to "Delete Notification", notification_url(notification), method: :delete %>
+      </li>
+
 			<% end %>
 		</ul>
 	</article>

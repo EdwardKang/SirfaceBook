@@ -23,4 +23,5 @@ FacebookLite::Application.routes.draw do
   resources :likes, only: [:create, :destroy]
   resources :messages, only: [:create, :index, :show]
   resources :photos, only: [:show, :update]
+  resources :notifications, only: [:destroy]
 end

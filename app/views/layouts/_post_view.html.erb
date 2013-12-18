@@ -41,7 +41,7 @@
     <ul>
       <% post.comments.each do |comment| %>
         <li class="list-comment">
-          <% commenter = User.find(comment.user_id) %>
+          <% commenter = comment.user %>
           <p>
             <% temp_profile_url = commenter.profile_photo ? commenter.profile_photo.pic : "default_profile_pic.jpeg" %>
             <%= image_tag(temp_profile_url, class: "comment-header-photo") %>

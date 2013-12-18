@@ -1,6 +1,6 @@
 class NotifyObserver < ActiveRecord::Observer
   observe :post, :like, :comment, :message, :friendship
-  
+
   def after_commit(record)
     notifiable_type = record.class.name
     if record.send(:transaction_include_action?, :create)
@@ -22,7 +22,7 @@ class NotifyObserver < ActiveRecord::Observer
           Notification.create({ notifiable_id: record.id, notifiable_type: notifiable_type, user_id: post.sender_id, sender_id: record.user_id })
         end
       end
-      
+
     elsif record.send(:transaction_include_action?, :update)
       Notification.create({ notifiable_id: record.id, notifiable_type: notifiable_type, user_id: record.friender_id, sender_id: record.friendee_id})
     end
