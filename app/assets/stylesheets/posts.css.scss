@@ -1,11 +1,14 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+ul {
+	list-style: none;
+}
 
 .post-wrapper {
   background: #a7d3ff;
   width: 500px;
-  margin: auto;
+  margin: 20px auto;
 }
 
 .header-photo {
@@ -14,15 +17,17 @@
 
 .everything-right {
   float: left;
-  width: 440px;
+	margin-left: 10px;
+  width: 430px;
 }
 
 .post-header {
-  margin-left: 10px;
+	padding-top: 5px;
 }
 
 .post-body {
-  margin-left: 13px;
+	padding-top: 5px;
+  margin-left: 3px;
 }
 
 .post-header-photo {
@@ -37,24 +42,80 @@
 }
 
 .post-body-photo {
-  padding-top: 40px;
   width: 400px;
   margin: auto;
 }
 
 .post-photo {
+	padding-top: 40px;
   width: 350px;
 }
 
-.new-comment {
-  padding-left: 20px;
+.edit-post {
+	padding-top: 8px;
+	padding-bottom: 10px;
 }
 
-.original-post {
-  border-bottom: 2px solid grey;
+.edit-post > li {
+	float: left;
+	display: block;
+	font-size: .8em;
+	color: blue;
+	padding: 2px;
+}
+
+.edit-post li input {
+	border: 0;
+	margin: 0 15px 0 0;
+	padding: 0;
+	font: inherit;
+	background: inherit;
+	color: blue;
+}
+
+.edit-post time {
+	color: #B8B8B8;
+	margin: 0 7px 0 0;
+}
+
+.edit-post span {
+	margin: 0 15px 0 0;
+}
+
+.post-comments {
+	
+}
+
+.comment-header-photo {
+	width: 50px;
+	height: 50px;
 }
 
 .list-comment {
-  border-bottom: 2px solid grey;
-  padding: 15px 0 20px 15px;
 }
+
+.left-comment {
+	float: left;
+}
+
+.comment-body {
+	padding: 4px;
+	margin-bottom: -10px;
+}
+
+.right-comment {
+	float: left;
+	margin-left: 10px;
+	font-size: .9em;
+}
+
+.right-comment a {
+  font-weight: bold;
+  text-decoration: none;
+  color: blue;
+}
+
+.comment-text {
+	width: 300px;
+}
+

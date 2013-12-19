@@ -1,72 +1,106 @@
-<div class="post-wrapper">
-  <div class="original-post">
-    <div class="header-photo">
-      <% sender = post.sender %>
-      <% temp_profile_url = sender.profile_photo ? sender.profile_photo.pic : "default_profile_pic.jpeg" %>
-      <%= link_to image_tag(temp_profile_url, class: "post-header-photo"), wall_user_url(sender) %>
+<div class="post-wrapper group">
+  <div class="header-photo">
+    <% sender = post.sender %>
+    <% temp_profile_url = sender.profile_photo ? sender.profile_photo.pic : "default_profile_pic.jpeg" %>
+    <%= link_to image_tag(temp_profile_url, class: "post-header-photo"), wall_user_url(sender) %>
+  </div>
+
+  <div class="everything-right">
+    <div class="post-content group">
+      <div class="post-header">
+          <% unless post.sender_id == post.receiver_id %>
+            <%= link_to "#{sender.first_name} #{sender.last_name}", wall_user_url(sender) %>
+            &rarr;
+          <% end %>
+
+          <% receiver = post.reveiver %>
+          <%= link_to "#{receiver.first_name} #{receiver.last_name}", wall_user_url(receiver) %>
+      </div>
+
+      <div class="post-body">
+        <%= post.body %>
+      </div>
     </div>
 
-    <div class="everything-right">
-      <div class="post-content group">
-        <div class="post-header">
-            <% unless post.sender_id == post.receiver_id %>
-              <%= link_to "#{sender.first_name} #{sender.last_name}", wall_user_url(sender) %>
-              &rarr;
-            <% end %>
+    <div class="post-body-photo">
+      <% photo = post.photos.first %>
 
-            <% receiver = post.reveiver %>
-            <%= link_to "#{receiver.first_name} #{receiver.last_name}", wall_user_url(receiver) %>
-        </div>
+      <% if photo %>
+        <%= link_to image_tag(photo.pic, class: "post-photo"), photo_url(photo) %>
+      <% end %>
+    </div>
 
-        <div class="post-body">
-          <%= post.body %>
-        </div>
-      </div>
-
-      <div class="post-body-photo">
-        <% photo = post.photos.first %>
-
-        <% if photo %>
-          <%= link_to image_tag(photo.pic, class: "post-photo"), photo_url(photo) %>
-        <% end %>
-      </div>
-
-      <div class="edit-post">
-        <% if sender.id == current_user.id %>
-          <%= button_to "Delete Post", post_url(post), method: :delete %>
-        <% end %>
-
+    <ul class="edit-post group">
+			<li>
+				<time>
+					Posted <%= time_ago_in_words(post.created_at) %> ago
+				</time>
+			</li>
+			
+			<li>
+	      <% if post.likes.count > 0 %>
+					<span>
+	          <%= pluralize(post.likes.count, "like") %>
+					</span>
+	      <% end %>
+			</li>
+			
+			<li>
         <% if current_user.friends_ids.include?(receiver.id) %>
           <%= render "layouts/like_button_post", post: post %>
         <% end %>
-
-        <% if post.likes.count > 0 %>
-          <%= pluralize(post.likes.count, "like") %>
+			</li>	
+			
+			<li>
+        <% if sender.id == current_user.id %>
+          <%= button_to "Delete Post", post_url(post), method: :delete %>
         <% end %>
-      </div>
-    </div>
-
+			</li>
+    </ul>
+		
     <div class="post-comments">
       <ul>
         <% post.comments.each do |comment| %>
-          <li class="list-comment">
+          <li class="list-comment group">
             <% commenter = comment.user %>
-            <p>
+            <div class="left-comment">
               <% temp_profile_url = commenter.profile_photo ? commenter.profile_photo.pic : "default_profile_pic.jpeg" %>
-              <%= image_tag(temp_profile_url, class: "comment-header-photo") %>
-              <%= commenter.first_name + " " + commenter.last_name %>
-            </p>
-            <%= comment.body %>
-
-            <% if commenter.id == current_user.id %>
-              <%= button_to "Delete Comment", comment_url(comment), method: :delete %>
-            <% end %>
-
-            <%= render "layouts/like_button_comment", comment: comment %>
-
-            <% if comment.likes.count > 0 %>
-              <%= pluralize(comment.likes.count, "like") %>
-            <% end %>
+              <%= link_to image_tag(temp_profile_url, class: "comment-header-photo"), wall_user_url(commenter) %>
+						</div>
+     
+		        <div class="right-comment">
+							<%= link_to "#{commenter.first_name} #{commenter.last_name}", wall_user_url(commenter) %>
+	            
+							<div class="comment-body">
+								<%= comment.body %>
+							</div>
+	            
+							<ul class="edit-post group">
+								<li>
+									<time>
+										Posted <%= time_ago_in_words(post.created_at) %> ago
+									</time>
+								</li>
+								
+								<li>
+			            <% if comment.likes.count > 0 %>
+										<span>
+				              <%= pluralize(comment.likes.count, "like") %>
+										</span>
+			            <% end %>
+								</li>
+								
+								<li>
+			            <%= render "layouts/like_button_comment", comment: comment %>
+								</li>
+								
+								<li>
+									<% if commenter.id == current_user.id %>
+			              <%= button_to "Delete Comment", comment_url(comment), method: :delete %>
+			            <% end %>
+								</li>
+							</ul>
+						</div>
           </li>
         <% end %>
       </ul>
