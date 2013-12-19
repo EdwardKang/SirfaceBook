@@ -36,3 +36,58 @@
   width: 1000px;
   margin: auto;
 }
+
+.photos {
+  width: 1000px;
+  margin: auto;
+}
+
+.user-photos li {
+  float: left;
+}
+
+.user-photos li img {
+  padding: 20px;
+}
+
+.about {
+  width: 1000px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.about-title {
+  font-size: 1.6em;
+}
+
+.left {
+  margin-left: 40px;
+  float: left;
+}
+
+.right {
+  float: left;
+}
+
+.table-header {
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+th {
+  text-align: left;
+}
+
+.friends {
+  width: 1000px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.friends header {
+  margin-left: 20px;
+}
+
+.friends article {
+  margin-left: 30px;
+}

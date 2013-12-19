@@ -2,11 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .wall-header {
+  width: 700px;
+  margin: auto;
+}
+
+.wall-photo {
+  width: 400px;
+  float: left;
+}
+
+.wall-header-right {
   padding-left: 20px;
-  background: #FFF;
+  float: left;
+}
+
+.wall-header-right h3 {
+  padding: 60px 0 10px 0;
+  margin: 0;
 }
 
 .wall-header ul {
+  padding-left: 50px;
   list-style: none;
 }
 
@@ -14,3 +30,72 @@
   float: left;
   padding: 15px;
 }
+
+.wall-nav {
+  width: 400px;
+  background: grey;
+}
+
+.wall-wrapper {
+  width: 1000px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.wall-sidebar {
+  width: 300;
+  float: left;
+}
+
+.about-header {
+  background: #C0C0C0;
+  padding: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.brief-about {
+  width: 280px;
+}
+
+.brief-about article {
+}
+
+.about-list {
+  border-top: 1px solid white;
+  background: #C8C8C8;
+}
+
+.about-list li {
+  border-bottom: 1px solid white;
+  padding: 7px 0;
+  padding-left: 20px;
+}
+
+.brief-photos {
+  margin-top: 30px;
+  width: 276px;
+  background: #C8C8C8;
+}
+
+.brief-photo {
+  width: 130px;
+  height: 130px;
+  float: left;
+}
+
+.photo-header {
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.brief-photo-list li img {
+  padding: 3px;
+}
+
+.wall-right {
+  float: left;
+  margin-left: 60px;
+}
+
