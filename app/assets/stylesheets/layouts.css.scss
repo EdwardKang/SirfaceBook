@@ -9,6 +9,11 @@ header, body, div, nav, ul, li, h1, p {
 
 a {
   text-decoration: none;
+  color: blue;
+}
+
+ul {
+  list-style: none;
 }
 
 .group:after {
@@ -65,4 +70,10 @@ div.header-wrapper {
 
 .logout:hover {
   cursor: pointer;
+}
+
+.empty-block {
+  height: 500px;
+  width: 500px;
+  margin: auto;
 }

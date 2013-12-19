@@ -1,3 +1,39 @@
 // Place all the styles related to the notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.notification-page {
+  width: 1000px;
+  margin: auto;
+}
+
+.notification {
+  padding: 15px 10px;
+  height: 70px;
+  width: 500px;
+}
+
+.notification-page h1 {
+  font-size: 1.5em;
+  padding: 10px 0 10px 0;
+}
+
+.notification-photo {
+  width: 60px;
+  height: 60px;
+  float: left;
+}
+
+.notification-right {
+  float: left;
+}
+
+.notification-body {
+  width: 350px;
+  margin: 10px;
+}
+
+.delete-not-button {
+  float: right;
+  margin-left: 10px;
+  margin-top: 10px;
+}

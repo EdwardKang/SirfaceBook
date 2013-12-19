@@ -53,9 +53,15 @@ h2 {
   width: 100%;
   display: block;
   border-bottom: 2px solid black;
+  padding-bottom: 10px;
 }
 
 .update-status h5 {
   width: 200px;
   font-size: 1.2em;
 }
+
+.submit-button {
+  display: none;
+}
+

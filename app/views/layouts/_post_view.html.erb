@@ -13,7 +13,7 @@
             &rarr;
           <% end %>
 
-          <% receiver = post.reveiver %>
+          <% receiver = post.receiver %>
           <%= link_to "#{receiver.first_name} #{receiver.last_name}", wall_user_url(receiver) %>
       </div>
 
@@ -36,28 +36,28 @@
 					Posted <%= time_ago_in_words(post.created_at) %> ago
 				</time>
 			</li>
-			
+
 			<li>
 	      <% if post.likes.count > 0 %>
 					<span>
-	          <%= pluralize(post.likes.count, "like") %>
+	          <%= pluralize(post.likes.count, "Like") %>
 					</span>
 	      <% end %>
 			</li>
-			
+
 			<li>
         <% if current_user.friends_ids.include?(receiver.id) %>
           <%= render "layouts/like_button_post", post: post %>
         <% end %>
-			</li>	
-			
+			</li>
+
 			<li>
         <% if sender.id == current_user.id %>
           <%= button_to "Delete Post", post_url(post), method: :delete %>
         <% end %>
 			</li>
     </ul>
-		
+
     <div class="post-comments">
       <ul>
         <% post.comments.each do |comment| %>
@@ -67,33 +67,33 @@
               <% temp_profile_url = commenter.profile_photo ? commenter.profile_photo.pic : "default_profile_pic.jpeg" %>
               <%= link_to image_tag(temp_profile_url, class: "comment-header-photo"), wall_user_url(commenter) %>
 						</div>
-     
+
 		        <div class="right-comment">
 							<%= link_to "#{commenter.first_name} #{commenter.last_name}", wall_user_url(commenter) %>
-	            
+
 							<div class="comment-body">
 								<%= comment.body %>
 							</div>
-	            
+
 							<ul class="edit-post group">
 								<li>
 									<time>
-										Posted <%= time_ago_in_words(post.created_at) %> ago
+										Commented <%= time_ago_in_words(post.created_at) %> ago
 									</time>
 								</li>
-								
+
 								<li>
 			            <% if comment.likes.count > 0 %>
 										<span>
-				              <%= pluralize(comment.likes.count, "like") %>
+				              <%= pluralize(comment.likes.count, "Like") %>
 										</span>
 			            <% end %>
 								</li>
-								
+
 								<li>
 			            <%= render "layouts/like_button_comment", comment: comment %>
 								</li>
-								
+
 								<li>
 									<% if commenter.id == current_user.id %>
 			              <%= button_to "Delete Comment", comment_url(comment), method: :delete %>

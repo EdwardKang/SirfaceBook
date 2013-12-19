@@ -1,35 +1,43 @@
-<div class="message-group">
-	<section class="message">
-		<% parent_sender = @message.sender %>
-		<% parent_receiver = @message.receiver %>
+<div class="message-wrapper">
+  <div class="messages-body">
+  	<section class="message group">
+  		<% parent_sender = @message.sender %>
+  		<% parent_receiver = @message.receiver %>
 
-		<header>
       <% temp_profile_url = parent_sender.profile_photo ? parent_sender.profile_photo.pic : "default_profile_pic.jpeg" %>
       <%= image_tag(temp_profile_url, class: "message-sender-photo") %>
-			<%= "#{parent_sender.first_name} #{parent_sender.last_name}" %>
-		</header>
 
-		<article class="message-body">
-			<%= @message.text %>
-		</article>
-	</section>
+      <div class="index-right">
+    		<header>
+    			<%= link_to "#{parent_sender.first_name} #{parent_sender.last_name}", wall_user_url(parent_sender) %>
+    		</header>
 
-	<% @message.children.each do |message| %>
-		<% sender = message.sender %>
+    		<article class="message-body">
+    			<%= @message.text %>
+    		</article>
+      </div>
+  	</section>
 
-		<section class"message">
-			<header>
-        <% temp_profile_url = sender.profile_photo ? sender.profile_photo.pic : "default_profile_pic.jpeg" %>
-        <%= image_tag(temp_profile_url, class: "message-sender-photo") %>
-				<%= "#{sender.first_name} #{sender.last_name}" %>
-			</header>
+  	<% @message.children.each do |message| %>
+  		<% sender = message.sender %>
 
-			<article class="message-body">
-				<%= message.text %>
-			</article>
-		</section>
-	<% end %>
+      <% temp_profile_url = sender.profile_photo ? sender.profile_photo.pic : "default_profile_pic.jpeg" %>
+      <%= image_tag(temp_profile_url, class: "message-sender-photo") %>
+  		<section class="message group">
+
+        <div class="index-right">
+          <header>
+    				<%= link_to "#{sender.first_name} #{sender.last_name}", wall_user_url(parent_sender) %>
+    			</header>
+
+    			<article class="message-body">
+    				<%= message.text %>
+          </article>
+        </div>
+  		</section>
+  	<% end %>
+
+  <% receiver = parent_sender.id == current_user.id ? parent_receiver : parent_sender %>
+  <%= render "add_message", parent: @message, receiver: receiver %>
+  </div>
 </div>
-
-<% receiver = parent_sender.id == current_user.id ? parent_receiver : parent_sender %>
-<%= render "add_message", parent: @message, receiver: receiver %>

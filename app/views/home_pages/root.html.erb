@@ -28,10 +28,14 @@
       <h1>News Feed</h1>
 
       <ul>
-        <% @news[(@news_feed_length * -1)..-1].reverse.each do |post| %>
-          <li>
-            <%= render "layouts/post_view", post: post %>
-          </li>
+        <% if @news.empty? %>
+          <div class="empty-block">GET SOME FRIENDS, YOUR MAKING ME LOOK BAD</div>
+        <% else %>
+          <% @news[(@news_feed_length * -1)..-1].reverse.each do |post| %>
+            <li>
+              <%= render "layouts/post_view", post: post %>
+            </li>
+          <% end %>
         <% end %>
       </ul>
 

@@ -2,23 +2,23 @@
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="<%= value %>">
 
-  <label for="high_school">High School</label>
-  <input type="text" name="profile[high_school]" value="<%= @profile.high_school %>" id="high_school">
+  <label for="high_school" class="profile-label">High School</label>
+  <input type="text" name="profile[high_school]" value="<%= @profile.high_school %>" id="high_school" class="profile-input">
 
-  <label for="college">College / University</label>
-  <input type="text" name="profile[college]" value="<%= @profile.college %>" id="college">
+  <label for="college" class="profile-label">College / University</label>
+  <input type="text" name="profile[college]" value="<%= @profile.college %>" id="college" class="profile-input">
 
-  <label for="employer">Employer</label>
-  <input type="text" name="profile[employer]" value="<%= @profile.employer %>" id="employer">
+  <label for="employer" class="profile-label">Employer</label>
+  <input type="text" name="profile[employer]" value="<%= @profile.employer %>" id="employer" class="profile-input">
 
-  <label for="current_city">Current City</label>
-  <input type="text" name="profile[current_city]" value="<%= @profile.current_city %>" id="current_city">
+  <label for="current_city" class="profile-label">Current City</label>
+  <input type="text" name="profile[current_city]" value="<%= @profile.current_city %>" id="current_city" class="profile-input">
 
-  <label for="hometown">Hometown</label>
-  <input type="text" name="profile[hometown]" value="<%= @profile.hometown %>" id="hometown">
+  <label for="hometown" class="profile-label">Hometown</label>
+  <input type="text" name="profile[hometown]" value="<%= @profile.hometown %>" id="hometown" class="profile-input">
 
-  <label for="interests">Interests</label>
-  <input type="text" name="profile[interests]" value="<%= @profile.interests %>" id="interests">
+  <label for="interests" class="profile-label">Interests</label>
+  <input type="text" name="profile[interests]" value="<%= @profile.interests %>" id="interests" class="profile-input">
 
   <p><input type="submit" value="Submit Your Profile"></p>
 </form>

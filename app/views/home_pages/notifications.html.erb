@@ -1,58 +1,65 @@
-<h1>Recent Notifications</h1>
+<div class="notification-page">
+  <h1>Recent Notifications</h1>
 
-<section class="notifications">
-	<article>
-		<ul>
-			<% @notifications.reverse.each do |notification| %>
-			<% notifiable_type = notification.notifiable_type %>
-      <% sender = notification.sender %>
-			<li>
-        <% temp_profile_url = sender.profile_photo ? sender.profile_photo.pic : "default_profile_pic.jpeg" %>
-        <%= image_tag(temp_profile_url, class: "notification-photo") %>
-				<%= link_to "#{sender.first_name} #{sender.last_name}", wall_user_url(sender) %>
+		<% @notifications.reverse.each do |notification| %>
+		<% notifiable_type = notification.notifiable_type %>
+    <% sender = notification.sender %>
 
-				<% if notifiable_type == "Post" %>
-					has sent you a
-					<%= link_to "post", wall_user_url(current_user) %>
-				<% elsif notifiable_type == "Message" %>
-					has sent you a
-					<%= link_to "message", message_url(notification.notifiable_id) %>
-				<% elsif notifiable_type == "Friendship" %>
-					<% if notification.notifiable.is_pending == true %>
-						has sent you a <%= link_to "friend request", "/friend-requests" %>
-					<% elsif notification.notifiable.friendee_id != current_user.id %>
-						has confirmed your <b>friend request</b>
-          <% else %>
-            and you are now <b>friends</b>
-					<% end %>
-				<% elsif notifiable_type == "Comment" %>
-					has commented on your
-					<%= link_to "post", wall_user_url(notification.notifiable.post.receiver_id) %>
-				<% elsif notifiable_type == "Like" %>
-					<% liked_obj = notification.notifiable.likeable %>
-					<% if liked_obj.class.name == "Comment" %>
-						<% if liked_obj.post.receiver.id == current_user.id %>
-							likes your comment on
-							<%= link_to "your wall", wall_user_url(liked_obj.post.receiver) %>
-						<% else %>
-							likes your comment on
-							<%= link_to "#{liked_obj.post.receiver.first_name}'s wall", wall_user_url(liked_obj.post.receiver) %>
-						<% end %>
-					<% elsif liked_obj.class.name == "Post" %>
-						<% if liked_obj.receiver.id == current_user.id %>
-							likes a post on
-							<%= link_to "your wall", wall_user_url(liked_obj.post.receiver) %>
-						<% else %>
-							likes your post on
-							<%= link_to "#{liked_obj.post.receiver.first_name}'s wall", wall_user_url(liked_obj.post.receiver) %>
-						<% end %>
-					<% end %>
-				<% end %>
+		<section class="notification">
+      <% temp_profile_url = sender.profile_photo ? sender.profile_photo.pic : "default_profile_pic.jpeg" %>
 
-        <%= button_to "Delete Notification", notification_url(notification), method: :delete %>
-      </li>
+      <div class="notification-image">
+        <%= link_to image_tag(temp_profile_url, class: "notification-photo"), wall_user_url(sender) %>
+      </div>
 
-			<% end %>
-		</ul>
-	</article>
-</section>
+      <div class="notification-right">
+        <div class="delete-notification">
+          <%= button_to "Delete Notification", notification_url(notification), method: :delete, class: "delete-not-button" %>
+        </div>
+
+        <div class="notification-body">
+      		<%= link_to "#{sender.first_name} #{sender.last_name}", wall_user_url(sender) %>
+
+    			<% if notifiable_type == "Post" %>
+    				has sent you a
+    				<%= link_to "post", wall_user_url(current_user) %>
+    			<% elsif notifiable_type == "Message" %>
+    				has sent you a
+    				<%= link_to "message", message_url(notification.notifiable_id) %>
+    			<% elsif notifiable_type == "Friendship" %>
+    				<% if notification.notifiable.is_pending == true %>
+    					has sent you a <%= link_to "friend request", "/friend-requests" %>
+    				<% elsif notification.notifiable.friendee_id != current_user.id %>
+    					has confirmed your <b>friend request</b>
+            <% else %>
+              and you are now <b>friends</b>
+    				<% end %>
+    			<% elsif notifiable_type == "Comment" %>
+    				has commented on your
+    				<%= link_to "post", wall_user_url(notification.notifiable.post.receiver_id) %>
+    			<% elsif notifiable_type == "Like" %>
+    				<% liked_obj = notification.notifiable.likeable %>
+    				<% if liked_obj.class.name == "Comment" %>
+    					<% if liked_obj.post.receiver.id == current_user.id %>
+    						likes your comment on
+    						<%= link_to "your wall", wall_user_url(liked_obj.post.receiver) %>
+    					<% else %>
+    						likes your comment on
+    						<%= link_to "#{liked_obj.post.receiver.first_name}'s wall", wall_user_url(liked_obj.post.receiver) %>
+    					<% end %>
+    				<% elsif liked_obj.class.name == "Post" %>
+    					<% if liked_obj.receiver_id == current_user.id %>
+    						likes a post on
+    						<%= link_to "your wall", wall_user_url(liked_obj.receiver) %>
+    					<% else %>
+    						likes your post on
+    						<%= link_to "#{liked_obj.post.receiver.first_name}'s wall", wall_user_url(liked_obj.post.receiver) %>
+    					<% end %>
+    				<% end %>
+      		<% end %>
+        </div>
+      </div>
+    </section>
+
+	<% end %>
+</div>

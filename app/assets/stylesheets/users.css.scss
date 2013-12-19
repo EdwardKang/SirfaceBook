@@ -1,42 +1,38 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.wall-header {
-  padding-left: 20px;
-  background: #FFF;
-}
-
-.wall-header ul {
-  list-style: none;
-}
-
-.wall-header ul li {
+// User Index Page
+.user-header-photo {
+  width: 50px;
+  height: 50px;
   float: left;
-  padding: 15px;
 }
 
-ul {
-  list-style: none;
+.users-index {
+  width: 1000px;
+  margin: auto;
 }
 
-.brief-about {
-  width: 200px;
-  border: 3px solid black;
+.user-index {
+  width: 250px;
+  height: 75px;
 }
 
-.about {
-  border-top: 2px solid grey;
+.index-right {
+  padding-top: 3px;
 }
 
-.right th, .left th {
-  text-align: left;
+.user-index a {
+  color: blue;
+  font-weight: bold;
 }
 
-.left {
-  padding: 20px;
+.pending-request-header {
+  font-size: 1.5em;
+  padding: 20px 0;
 }
 
-.right {
-  padding: 20px;
+.pending-header-wrapper {
+  width: 1000px;
+  margin: auto;
 }
-

@@ -2,10 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.sign-in, .sign-up {
+.sign-in, .sign-up, .profile-form {
   border: 2px solid black;
   border-radius: 25px;
   background-color: #a7d3ff;
+  padding-bottom: 20px;
 }
 
 .sign-in h2 {
@@ -88,4 +89,40 @@
 
 .sign-in-button:hover {
   text-decoration: underline;
+}
+
+.profile-form {
+  width: 310px;
+  margin: auto;
+}
+
+.profile-input {
+  width: 150px;
+}
+
+.profile-label {
+  display: inline-block;
+  width: 150px;
+}
+
+.profile-form {
+  padding: 20px;
+}
+
+.profile-setup-page {
+  margin-top: 100px;
+}
+
+h2.profile-header {
+  font-weight: bold;
+  margin: auto;
+  width: 240px;
+  padding-bottom: 20px;
+}
+
+h3.profile-header {
+  font-weight: bold;
+  margin: auto;
+  padding-bottom: 20px;
+  width: 267px;
 }

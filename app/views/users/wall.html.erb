@@ -1,23 +1,41 @@
 <%= render "header" %>
 
-<section class="brief-about">
-  <header class="about-header">About
-  </header>
+<div class="wall-sidebar">
+  <section class="brief-about">
+    <header class="about-header">About</header>
 
-  <article>
-    <ul>
-      <% user_college = @user.profile.college %>
-      <li>Studied at <%= user_college == "" ? @user.profile.high_school : user_college %></li>
+    <article>
+      <ul class="about-list">
+        <% user_college = @user.profile.college %>
+        <li>
+          Studied at <%= user_college == "" ? @user.profile.high_school : user_college %>
+        </li>
+
+        <li>
+          Birthday is <%= "#{@user.birth_month} #{@user.birth_day}, #{@user.birth_year}" %>
+        </li>
+
+        <li>
+          Its a <%= @user.gender == "Male" ? "He" : "She" %>
+        </li>
+      </ul>
+
+    </article>
+  </section>
+
+  <section class="brief-photos">
+    <header class="photo-header">Photos</header>
+
+    <ul class="brief-photo-list">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
     </ul>
+  </section>
+</div>
 
-  </article>
-</section>
-
-<section class="brief-photos">
-
-</section>
-
-<section class="update-status">
+<section class="wall-update-status">
   <% if @user.id == current_user.id %>
     <h5>Update Status</h5>
     <%= render "layouts/new_status" %>
