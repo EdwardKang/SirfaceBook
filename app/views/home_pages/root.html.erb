@@ -60,8 +60,31 @@ $(document).ready(function(event){
   });
 
   $("#posts-list").on("ajax:success", "#like-form", function(event, data){
-    var $form = $(this)
+    var $form = $(this);
+    var $ul = $form.closest(".edit-post");
+    $ul.find(".like-button-posts").remove();
 
+    $ul.append(data);
   });
+
+  $("#posts-list").on("ajax:success", ".delete-like-button", function(event, data){
+    var $button = $(this);
+    var $ul = $button.closest(".edit-post");
+    $ul.find(".like-button-posts").remove();
+
+    $ul.append(data);
+  });
+
+  $("#posts-list").on("ajax:success", "#new-comment-form", function(event, data){
+    var $form = $(this);
+    var $ul = $form.closest(".everything-right");
+    var $ul2 = $ul.find(".comments-list")
+
+    $ul2.append(data);
+
+    $form[0].reset();
+  });
+
+
 });
 </script>

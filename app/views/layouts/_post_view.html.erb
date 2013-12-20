@@ -38,70 +38,18 @@
 			</li>
 
 			<li>
-	      <% if post.likes.count > 0 %>
-					<span>
-	          <%= pluralize(post.likes.count, "Like") %>
-					</span>
-	      <% end %>
-			</li>
-
-			<li>
-        <% if current_user.friends_ids.include?(receiver.id) %>
-          <%= render "layouts/like_button_post", post: post %>
-        <% end %>
-			</li>
-
-			<li>
         <% if sender.id == current_user.id %>
           <%= button_to "Delete Post", post_url(post), method: :delete, :remote => true, :form_class => "delete-post-button" %>
         <% end %>
 			</li>
+
+      <%= render "layouts/like_button_post", post: post %>
     </ul>
 
     <div class="post-comments">
-      <ul>
+      <ul class="comments-list">
         <% post.comments.each do |comment| %>
-          <li class="list-comment group">
-            <% commenter = comment.user %>
-            <div class="left-comment">
-              <% temp_profile_url = commenter.profile_photo ? commenter.profile_photo.pic : "default_profile_pic.jpeg" %>
-              <%= link_to image_tag(temp_profile_url, class: "comment-header-photo"), wall_user_url(commenter) %>
-						</div>
-
-		        <div class="right-comment">
-							<%= link_to "#{commenter.first_name} #{commenter.last_name}", wall_user_url(commenter) %>
-
-							<div class="comment-body">
-								<%= comment.body %>
-							</div>
-
-							<ul class="edit-post group">
-								<li>
-									<time>
-										Commented <%= time_ago_in_words(post.created_at) %> ago
-									</time>
-								</li>
-
-								<li>
-			            <% if comment.likes.count > 0 %>
-										<span>
-				              <%= pluralize(comment.likes.count, "Like") %>
-										</span>
-			            <% end %>
-								</li>
-
-								<li>
-			            <%= render "layouts/like_button_comment", comment: comment %>
-								</li>
-
-								<li>
-									<% if commenter.id == current_user.id %>
-			              <%= button_to "Delete Comment", comment_url(comment), method: :delete %>
-			            <% end %>
-								</li>
-							</ul>
-						</div>
-          </li>
+          <%= render "layouts/comment_view", comment: comment %>
         <% end %>
       </ul>
     </div>

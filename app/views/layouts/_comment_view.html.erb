@@ -1,0 +1,41 @@
+<li class="list-comment group">
+  <% commenter = comment.user %>
+  <div class="left-comment">
+    <% temp_profile_url = commenter.profile_photo ? commenter.profile_photo.pic : "default_profile_pic.jpeg" %>
+    <%= link_to image_tag(temp_profile_url, class: "comment-header-photo"), wall_user_url(commenter) %>
+	</div>
+
+  <div class="right-comment">
+		<%= link_to "#{commenter.first_name} #{commenter.last_name}", wall_user_url(commenter) %>
+
+		<div class="comment-body">
+			<%= comment.body %>
+		</div>
+
+		<ul class="edit-post group">
+			<li>
+				<time>
+					Commented <%= time_ago_in_words(comment.created_at) %> ago
+				</time>
+			</li>
+
+			<li>
+        <% if comment.likes.count > 0 %>
+					<span>
+            <%= pluralize(comment.likes.count, "Like") %>
+					</span>
+        <% end %>
+			</li>
+
+			<li>
+        <%= render "layouts/like_button_comment", comment: comment %>
+			</li>
+
+			<li>
+				<% if commenter.id == current_user.id %>
+          <%= button_to "Delete Comment", comment_url(comment), method: :delete %>
+        <% end %>
+			</li>
+		</ul>
+	</div>
+</li>
