@@ -1,3 +1,12 @@
 <% post = @photo.post %>
 
 <%= render "layouts/post_view", post: post %>
+
+<% if user.id == current_user.id %>
+
+  <% if !user.profile_photo || @photo.id != user.profile_photo.id %>
+    <%= button_to "Set this as Profile Pic", photo_url(@photo), method: :put %>
+  <% end %>
+
+  <%= button_to "Delete Post", post_url(post), method: :delete %>
+<% end %>
