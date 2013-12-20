@@ -20,22 +20,12 @@
 			</li>
 
 			<li>
-        <% if comment.likes.count > 0 %>
-					<span>
-            <%= pluralize(comment.likes.count, "Like") %>
-					</span>
-        <% end %>
-			</li>
-
-			<li>
-        <%= render "layouts/like_button_comment", comment: comment %>
-			</li>
-
-			<li>
 				<% if commenter.id == current_user.id %>
           <%= button_to "Delete Comment", comment_url(comment), method: :delete %>
         <% end %>
 			</li>
+
+			<%= render "layouts/like_button_post", post: comment, :remote => true, :form_class => "delete-comment-button" %>
 		</ul>
 	</div>
 </li>

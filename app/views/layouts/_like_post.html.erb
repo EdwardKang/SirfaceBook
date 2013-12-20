@@ -2,7 +2,7 @@
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
   <input type="hidden" name="like[likeable_id]" value="<%= post.id %>">
-  <input type="hidden" name="like[likeable_type]" value="Post">
+  <input type="hidden" name="like[likeable_type]" value="<%= likeable_type %>">
   <input type="hidden" name="like[user_id]" value="<%= current_user.id %>">
   <p><input type="submit" value="Like" class="like"></p>
 </form>

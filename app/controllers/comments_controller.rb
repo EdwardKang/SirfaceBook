@@ -17,6 +17,11 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to :back
+
+    if request.xhr?
+      render partial: "layouts/empty"
+    else
+      redirect_to :back
+    end
   end
 end

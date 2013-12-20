@@ -85,6 +85,11 @@ $(document).ready(function(event){
     $form[0].reset();
   });
 
+  $("posts-list").on("ajax:success", ".delete-comment-button", function(event, data){
+    var $button = $(this);
+    var $comment = $button.closet("list-comment");
 
+    $comment.remove();
+  });
 });
 </script>
