@@ -27,12 +27,12 @@
     <article class="newsfeed">
       <h1>News Feed</h1>
 
-      <ul>
+      <ul id="posts-list">
         <% if @news.empty? %>
           <div class="empty-block">GET SOME FRIENDS, YOUR MAKING ME LOOK BAD</div>
         <% else %>
-          <% @news[(@news_feed_length * -1)..-1].reverse.each do |post| %>
-            <li>
+          <% @news.each do |post| %>
+            <li class="single-post">
               <%= render "layouts/post_view", post: post %>
             </li>
           <% end %>
@@ -42,3 +42,26 @@
     </article>
   </section>
 </div>
+
+<script>
+$(document).ready(function(event){
+  $("#update-status-form").on("ajax:success", function(event, data){
+    var $form = $(this);
+    $("#posts-list").prepend(data);
+
+    $form[0].reset();
+  });
+
+  $("#posts-list").on("ajax:success", ".delete-post-button", function(event, data){
+    var $button = $(this);
+    var $post = $button.closest(".post-wrapper");
+
+    $post.remove();
+  });
+
+  $("#posts-list").on("ajax:success", "#like-form", function(event, data){
+    var $form = $(this)
+
+  });
+});
+</script>

@@ -13,7 +13,7 @@ class NotifyObserver < ActiveRecord::Observer
         Notification.create({ notifiable_id: record.id, notifiable_type: notifiable_type, user_id: post.receiver_id, sender_id: record.user_id })
         Notification.create({ notifiable_id: record.id, notifiable_type: notifiable_type, user_id: post.sender_id, sender_id: record.user_id })
       elsif notifiable_type == "Like"
-        if record.likeable_type == "comment"
+        if record.likeable_type == "Comment"
           comment = record.likeable
           Notification.create({ notifiable_id: record.id, notifiable_type: notifiable_type, user_id: comment.user_id, sender_id: record.user_id })
         else

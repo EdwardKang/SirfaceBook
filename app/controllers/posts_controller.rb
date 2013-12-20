@@ -12,12 +12,21 @@ class PostsController < ApplicationController
     end
 
     @post.save
-    redirect_to :back
+
+    if request.xhr?
+      render partial: "layouts/post_view", locals: { post: @post }
+    else
+      redirect_to :back
+    end
   end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to :back
+    if request.xhr?
+      render partial: "layouts/empty"
+    else
+      redirect_to :back
+    end
   end
 end

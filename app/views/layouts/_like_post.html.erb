@@ -1,4 +1,4 @@
-<form action="<%= likes_url %>" method="post">
+<form action="<%= likes_url %>" method="post" data-remote="true" id="like-form">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
   <input type="hidden" name="like[likeable_id]" value="<%= post.id %>">
