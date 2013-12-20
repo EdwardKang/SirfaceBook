@@ -58,8 +58,8 @@
 
     <section class="main-wall">
       <article>
-        <ul>
-          <% @user.received_posts.each do |post| %>
+        <ul class="posts-list">
+          <% @user.received_posts.order('created_at DESC').each do |post| %>
             <li>
               <%= render "layouts/post_view", post: post %>
             </li>
@@ -69,3 +69,54 @@
     </section>
   </div>
 </div>
+
+<script>
+$(document).ready(function(event){
+  $("#update-status-form").on("ajax:success", function(event, data){
+    var $form = $(this);
+    $(".posts-list").prepend(data);
+
+    $form[0].reset();
+  });
+
+  $(".posts-list").on("ajax:success", ".delete-post-button", function(event, data){
+    var $button = $(this);
+    var $post = $button.closest(".post-wrapper");
+
+    $post.remove();
+  });
+
+  $(".posts-list").on("ajax:success", "#like-form", function(event, data){
+    var $form = $(this);
+    var $ul = $form.closest(".edit-post");
+    $ul.find(".like-button-posts").remove();
+
+    $ul.append(data);
+  });
+
+  $(".posts-list").on("ajax:success", ".delete-like-button", function(event, data){
+    var $button = $(this);
+    var $ul = $button.closest(".edit-post");
+    $ul.find(".like-button-posts").remove();
+
+    $ul.append(data);
+  });
+
+  $(".posts-list").on("ajax:success", "#new-comment-form", function(event, data){
+    var $form = $(this);
+    var $ul = $form.closest(".everything-right");
+    var $ul2 = $ul.find(".comments-list")
+
+    $ul2.append(data);
+
+    $form[0].reset();
+  });
+
+  $(".posts-list").on("ajax:success", ".delete-comment-button", function(event, data){
+    var $button = $(this);
+    var $comment = $button.closet("list-comment");
+
+    $comment.remove();
+  });
+});
+</script>
