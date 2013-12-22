@@ -21,11 +21,11 @@
 
 			<li>
 				<% if commenter.id == current_user.id %>
-          <%= button_to "Delete Comment", comment_url(comment), method: :delete %>
+          <%= button_to "Delete Comment", comment_url(comment), method: :delete, :remote => true, :form_class => "delete-comment-button" %>
         <% end %>
 			</li>
 
-			<%= render "layouts/like_button_post", post: comment, :remote => true, :form_class => "delete-comment-button" %>
+			<%= render "layouts/like_button_post", post: comment %>
 		</ul>
 	</div>
 </li>

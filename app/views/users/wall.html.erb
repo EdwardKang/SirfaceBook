@@ -61,7 +61,7 @@
         <ul class="posts-list">
           <% @user.received_posts.order('created_at DESC').each do |post| %>
             <li>
-              <%= render "layouts/post_view", post: post %>
+              <%= render "layouts/post_view", post: post, show_page: false %>
             </li>
           <% end %>
         </ul>
@@ -114,7 +114,7 @@ $(document).ready(function(event){
 
   $(".posts-list").on("ajax:success", ".delete-comment-button", function(event, data){
     var $button = $(this);
-    var $comment = $button.closet("list-comment");
+    var $comment = $button.closest(".list-comment");
 
     $comment.remove();
   });

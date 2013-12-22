@@ -33,7 +33,7 @@
         <% else %>
           <% @news.each do |post| %>
             <li class="single-post">
-              <%= render "layouts/post_view", post: post %>
+              <%= render "layouts/post_view", post: post, show_page: false %>
             </li>
           <% end %>
         <% end %>
@@ -87,7 +87,7 @@ $(document).ready(function(event){
 
   $("#posts-list").on("ajax:success", ".delete-comment-button", function(event, data){
     var $button = $(this);
-    var $comment = $button.closet("list-comment");
+    var $comment = $button.closest(".list-comment");
 
     $comment.remove();
   });
