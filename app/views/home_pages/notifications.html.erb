@@ -14,7 +14,7 @@
 
       <div class="notification-right">
         <div class="delete-notification">
-          <%= button_to "Delete Notification", notification_url(notification), method: :delete, class: "delete-not-button" %>
+          <%= button_to "Delete Notification", notification_url(notification), method: :delete, class: "delete-not-button", :remote => true, :form_class => "delete-notification-button" %>
         </div>
 
         <div class="notification-body">
@@ -63,3 +63,16 @@
 
 	<% end %>
 </div>
+
+
+<script>
+$(document).ready(function(event){
+	$(".notification-page").on("ajax:success", ".delete-notification-button", function(event, data){
+		$button = $(this);
+		$notification = $button.closest(".notification");
+		$notification.remove();
+	});
+});
+
+
+</script>

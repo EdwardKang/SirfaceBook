@@ -5,7 +5,12 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.new(params[:friendship])
     @friendship.is_pending = true
     @friendship.save
-    redirect_to :back
+    
+    if request.xhr?
+      render partial: "layouts/delete_friendship", locals: { label: "Cancel Request", friendship:  @friendship }
+    else
+      redirect_to :back
+    end
   end
 
   def update
@@ -15,12 +20,23 @@ class FriendshipsController < ApplicationController
 
     params[:friendship][:is_pending] = false
     @friendship.update_attributes(params[:friendship])
-    redirect_to :back
+    
+    if request.xhr?
+      render partial: "layouts/delete_friendship", locals: { label: "Unfriend", friendship:  @friendship }
+    else
+      redirect_to :back
+    end
   end
 
   def destroy
     @friendship = Friendship.find(params[:id])
+    user = @friendship.friender.id == current_user.id ? @friendship.friendee : @friendship.friender
     @friendship.destroy
-    redirect_to :back
+    
+    if request.xhr?
+      render partial: "layouts/friend", locals: { user: user }
+    else
+      redirect_to :back
+    end
   end
 end

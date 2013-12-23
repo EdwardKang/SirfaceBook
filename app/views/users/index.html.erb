@@ -19,20 +19,40 @@
       <div class="index-right">
         <%= link_to "#{user.first_name} #{user.last_name}", wall_user_url(user) %>
 
-
-
-    		<% if valid_friendship %>
-    			<%= button_to "Unfriend", friendship_url(valid_friendship), method: :delete %>
-    		<% elsif received_friendship %>
-    			<%= render "layouts/accept_friend", user: user, url: friendship_url(received_friendship) %>
-    			<%= button_to "Cancel Friend Request", friendship_url(received_friendship), method: :delete %>
-    		<% elsif initiated_friendship %>
-    			<%= button_to "Cancel Request", friendship_url(initiated_friendship), method: :delete %>
-    		<% else %>
-    			<%= render "layouts/friend", user: user %>
-    		<% end %>
+				<div class="friendship-button">
+				<%= render "layouts/friendship_buttons", user: user, valid_friendship: valid_friendship, received_friendship: received_friendship, initiated_friendship: initiated_friendship %>
+    		</div>
+				
       </div>
+			
     </article>
-
   <% end %>
 </section>
+
+<script>
+$(document).ready(function(event){
+	$(".index-right").on("ajax:success", ".unfriend-button", function(event, data){
+		$button = $(this);
+		
+		$div = $button.closest(".friendship-button");
+		$div.empty();
+		$div.append(data);
+	});
+	
+	$(".index-right").on("ajax:success", ".accept-friend-form", function(event, data){
+		$form = $(this);
+		
+		$div = $form.closest(".friendship-button");
+		$div.empty();
+		$div.append(data);
+	});
+	
+	$(".index-right").on("ajax:success", ".friend-form", function(event, data){
+		$form = $(this);
+		
+		$div = $form.closest(".friendship-button");
+		$div.empty();
+		$div.append(data);
+	});
+});
+</script>

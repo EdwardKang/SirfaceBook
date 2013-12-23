@@ -15,10 +15,31 @@
 
         <div class="index-right">
           <%= link_to "#{friend.first_name} #{friend.last_name}",	 wall_user_url(friend) %>
-  				<%= render "layouts/accept_friend", user: friend, url: friendship_url(received_friendship) %>
-  				<%= button_to "Cancel Friend Request", friendship_url(received_friendship), method: :delete %>
+  				
+					<div class="friendship-button">
+						<%= render "layouts/accept_friend", user: friend, url: friendship_url(received_friendship) %>
+						<%= button_to "Cancel Friend Request", friendship_url(received_friendship), method: :delete, :remote => true, :form_class => "unfriend-button" %>
+					</div>
         </div>
       </article>
 		<% end %>
   <% end %>
 </section>
+
+<script>
+$(document).ready(function(event){
+	$(".index-right").on("ajax:success", ".unfriend-button", function(event, data){
+		$button = $(this);
+		
+		$article = $button.closest(".user-index");
+		$article.remove();
+	});
+	
+	$(".index-right").on("ajax:success", ".accept-friend-form", function(event, data){
+		$form = $(this);
+		
+		$article = $form.closest(".user-index");
+		$article.remove();
+	});
+});
+</script>

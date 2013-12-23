@@ -1,0 +1,10 @@
+<% if valid_friendship %>
+	<%= button_to "Unfriend", friendship_url(valid_friendship), method: :delete, :remote => true, :form_class => "unfriend-button" %>
+<% elsif received_friendship %>
+	<%= render "layouts/accept_friend", user: user, url: friendship_url(received_friendship) %>
+	<%= button_to "Cancel Friend Request", friendship_url(received_friendship), method: :delete, :remote => true, :form_class => "unfriend-button" %>
+<% elsif initiated_friendship %>
+	<%= button_to "Cancel Request", friendship_url(initiated_friendship), method: :delete, :remote => true, :form_class => "unfriend-button" %>
+<% else %>
+	<%= render "layouts/friend", user: user %>
+<% end %>

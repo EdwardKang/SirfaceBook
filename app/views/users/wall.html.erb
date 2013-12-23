@@ -118,5 +118,29 @@ $(document).ready(function(event){
 
     $comment.remove();
   });
+	
+	$(".wall-header-right").on("ajax:success", ".unfriend-button", function(event, data){
+		$button = $(this);
+		
+		$div = $button.closest(".friendship-button");
+		$div.empty();
+		$div.append(data);
+	});
+	
+	$(".wall-header-right").on("ajax:success", ".accept-friend-form", function(event, data){
+		$form = $(this);
+		
+		$div = $form.closest(".friendship-button");
+		$div.empty();
+		$div.append(data);
+	});
+	
+	$(".wall-header-right").on("ajax:success", ".friend-form", function(event, data){
+		$form = $(this);
+		
+		$div = $form.closest(".friendship-button");
+		$div.empty();
+		$div.append(data);
+	});
 });
 </script>
