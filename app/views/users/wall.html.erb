@@ -78,6 +78,13 @@ $(document).ready(function(event){
 
     $form[0].reset();
   });
+	
+  $("#new-post-form").on("ajax:success", function(event, data){
+    var $form = $(this);
+    $(".posts-list").prepend(data);
+
+    $form[0].reset();
+  });
 
   $(".posts-list").on("ajax:success", ".delete-post-button", function(event, data){
     var $button = $(this);

@@ -1,4 +1,4 @@
-<form action="<%= posts_url %>" method="post">
+<form action="<%= posts_url %>" method="post" data-remote="true" id="new-post-form">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="text" name="post[body]" placeholder="Post on Wall..">
   <input type="hidden" name="post[receiver_id]" value="<%= user.id %>">
