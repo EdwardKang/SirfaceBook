@@ -9,8 +9,17 @@
 		<ul>
 			<% @user.friends.each do |friend| %>
 			
-			<li>
-				<%= link_to "#{friend.first_name} #{friend.last_name}", wall_user_url(friend) %>
+			<li class="user-index">
+        <% temp_profile_url = friend.profile_photo ? friend.profile_photo.pic : "default_profile_pic.jpeg" %>
+        <%= link_to image_tag(temp_profile_url, class: "user-header-photo"), wall_user_url(friend) %>
+				
+				<div class="index-right">
+					<%= link_to "#{friend.first_name} #{friend.last_name}", wall_user_url(friend) %>
+					
+					<div class="friendship-button">
+						<input type="button" value="Friends" class="is-friend"> 
+					</div>
+				</div>
 			</li>
 			
 			<% end %>

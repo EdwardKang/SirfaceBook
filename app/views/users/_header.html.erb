@@ -14,7 +14,11 @@
     <div class="wall-header-right">
       <h3><%= @user.first_name + " " + @user.last_name %></h3>
       <h5 class="friendship-button">
-        <%= render "layouts/friendship_buttons", user: @user, valid_friendship: valid_friendship, received_friendship: received_friendship, initiated_friendship: initiated_friendship %>
+				<% if @user == current_user %>
+					<%= link_to "Edit Profile", edit_profile_url(@user) %>
+				<% else %>
+	        <%= render "layouts/friendship_buttons", user: @user, valid_friendship: valid_friendship, received_friendship: received_friendship, initiated_friendship: initiated_friendship %>
+				<% end %>
       </h5>
     </div>
   </div>
