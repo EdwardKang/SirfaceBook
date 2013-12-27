@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131227015518) do
+ActiveRecord::Schema.define(:version => 20131227021942) do
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(:version => 20131227015518) do
     t.string   "pic_content_type"
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
-    t.boolean  "is_profile_pic"
     t.integer  "post_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
