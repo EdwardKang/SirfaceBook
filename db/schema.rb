@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131217191937) do
+ActiveRecord::Schema.define(:version => 20131226221145) do
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(:version => 20131217191937) do
     t.integer  "user_id"
   end
 
+  add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
   create_table "friendships", :force => true do |t|
     t.integer  "friender_id"
     t.integer  "friendee_id"
@@ -29,6 +32,9 @@ ActiveRecord::Schema.define(:version => 20131217191937) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "friendships", ["friendee_id"], :name => "index_friendships_on_friendee_id"
+  add_index "friendships", ["friender_id"], :name => "index_friendships_on_friender_id"
+
   create_table "likes", :force => true do |t|
     t.integer  "likeable_id"
     t.string   "likeable_type"
@@ -36,6 +42,9 @@ ActiveRecord::Schema.define(:version => 20131217191937) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  add_index "likes", ["likeable_id", "likeable_type"], :name => "index_likes_on_likeable_id_and_likeable_type"
+  add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
 
   create_table "messages", :force => true do |t|
     t.integer  "sender_id"
@@ -46,6 +55,10 @@ ActiveRecord::Schema.define(:version => 20131217191937) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "messages", ["parent_id"], :name => "index_messages_on_parent_id"
+  add_index "messages", ["receiver_id"], :name => "index_messages_on_receiver_id"
+  add_index "messages", ["sender_id"], :name => "index_messages_on_sender_id"
+
   create_table "notifications", :force => true do |t|
     t.integer  "user_id"
     t.integer  "sender_id"
@@ -54,6 +67,10 @@ ActiveRecord::Schema.define(:version => 20131217191937) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  add_index "notifications", ["notifiable_id", "notifiable_type"], :name => "index_notifications_on_notifiable_id_and_notifiable_type"
+  add_index "notifications", ["sender_id"], :name => "index_notifications_on_sender_id"
+  add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
   create_table "photos", :force => true do |t|
     t.integer  "user_id",          :null => false
@@ -67,6 +84,9 @@ ActiveRecord::Schema.define(:version => 20131217191937) do
     t.datetime "updated_at",       :null => false
   end
 
+  add_index "photos", ["post_id"], :name => "index_photos_on_post_id"
+  add_index "photos", ["user_id"], :name => "index_photos_on_user_id"
+
   create_table "posts", :force => true do |t|
     t.integer  "sender_id"
     t.integer  "receiver_id"
@@ -74,6 +94,9 @@ ActiveRecord::Schema.define(:version => 20131217191937) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "posts", ["receiver_id"], :name => "index_posts_on_receiver_id"
+  add_index "posts", ["sender_id"], :name => "index_posts_on_sender_id"
 
   create_table "profiles", :force => true do |t|
     t.string   "high_school"
@@ -86,6 +109,8 @@ ActiveRecord::Schema.define(:version => 20131217191937) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",           :null => false
