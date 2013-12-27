@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131226221145) do
+ActiveRecord::Schema.define(:version => 20131227015518) do
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
@@ -97,6 +97,16 @@ ActiveRecord::Schema.define(:version => 20131226221145) do
 
   add_index "posts", ["receiver_id"], :name => "index_posts_on_receiver_id"
   add_index "posts", ["sender_id"], :name => "index_posts_on_sender_id"
+
+  create_table "profile_pictures", :force => true do |t|
+    t.integer  "photo_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "profile_pictures", ["photo_id"], :name => "index_profile_pictures_on_photo_id"
+  add_index "profile_pictures", ["user_id"], :name => "index_profile_pictures_on_user_id"
 
   create_table "profiles", :force => true do |t|
     t.string   "high_school"

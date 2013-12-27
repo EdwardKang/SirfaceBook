@@ -86,18 +86,29 @@ class User < ActiveRecord::Base
     :notifications,
     class_name: "Notification",
     foreign_key: :user_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
     :sent_notifications,
     class_name: "Notification",
     foreign_key: :sender_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
+  )
+  
+  has_many(
+    :profile_pictures,
+    class_name: "ProfilePicture",
+    foreign_key: :user_id,
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many :received_friends, through: :received_friendships, source: :friender
   has_many :initiated_friends, through: :initiated_friendships, source: :friendee
+  has_one :profile_pic, through: :profile_pictures, source: :photo
 
   def profile_photo
     self.photos.where(is_profile_pic: true)[0]

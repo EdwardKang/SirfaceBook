@@ -5,8 +5,7 @@ class Photo < ActiveRecord::Base
   validates_presence_of :user_id
   validates :is_profile_pic, inclusion: { in: [true, false] }
 
-  has_attached_file :pic, :styles => {
-        }
+  has_attached_file :pic, :styles => {}
 
   belongs_to(
     :post,
@@ -20,6 +19,14 @@ class Photo < ActiveRecord::Base
     class_name: "User",
     foreign_key: :user_id,
     primary_key: :id
+  )
+  
+  has_many(
+    :profile_pics,
+    class_name: "ProfilePicture",
+    foreign_key: :photo_id,
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many :likes, as: :likeable
