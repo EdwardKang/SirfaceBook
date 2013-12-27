@@ -12,7 +12,7 @@
   		<% initiated_friendship = users_pending_initiated_friend_requests.select { |friendship| friendship.friendee_id == user.id }.first %>
   		<% valid_friendship = current_user_requests.select { |friendship| friendship.friendee_id == user.id || friendship.friender_id == user.id }.first %>
 
-      <% temp_profile_url = user.profile_photo ? user.profile_photo.pic : "default_profile_pic.jpeg" %>
+      <% temp_profile_url = user.profile_pic ? user.profile_pic.pic : "default_profile_pic.jpeg" %>
       <%= link_to image_tag(temp_profile_url, class: "user-header-photo"), wall_user_url(user) %>
 
 

@@ -22,6 +22,9 @@ FacebookLite::Application.routes.draw do
   resources :friendships, only: [:create, :update, :destroy]
   resources :likes, only: [:create, :destroy]
   resources :messages, only: [:create, :index, :show]
-  resources :photos, only: [:show, :update]
+  resources :photos, only: [:show, :update] do
+    resources :profile_pictures, only: [:create]
+  end
+  
   resources :notifications, only: [:destroy]
 end

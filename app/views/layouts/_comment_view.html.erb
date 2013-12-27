@@ -1,7 +1,7 @@
 <li class="list-comment group">
   <% commenter = comment.user %>
   <div class="left-comment">
-    <% temp_profile_url = commenter.profile_photo ? commenter.profile_photo.pic : "default_profile_pic.jpeg" %>
+    <% temp_profile_url = commenter.profile_pic ? commenter.profile_pic.pic : "default_profile_pic.jpeg" %>
     <%= link_to image_tag(temp_profile_url, class: "comment-header-photo"), wall_user_url(commenter) %>
 	</div>
 

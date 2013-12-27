@@ -10,7 +10,7 @@
 			<% @user.friends.each do |friend| %>
 			
 			<li class="user-index">
-        <% temp_profile_url = friend.profile_photo ? friend.profile_photo.pic : "default_profile_pic.jpeg" %>
+        <% temp_profile_url = friend.profile_pic ? friend.profile_pic.pic : "default_profile_pic.jpeg" %>
         <%= link_to image_tag(temp_profile_url, class: "user-header-photo"), wall_user_url(friend) %>
 				
 				<div class="index-right">

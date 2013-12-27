@@ -8,7 +8,7 @@
 
 <section class="wall-header">
   <div class="wall-header-body group">
-    <% temp_profile_url = @user.profile_photo ? @user.profile_photo.pic : "default_profile_pic.jpeg" %>
+    <% temp_profile_url = @user.profile_pic ? @user.profile_pic.pic : "default_profile_pic.jpeg" %>
     <%= image_tag(temp_profile_url, class: "wall-photo") %>
 
     <div class="wall-header-right">

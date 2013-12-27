@@ -98,8 +98,8 @@ class User < ActiveRecord::Base
     dependent: :destroy
   )
   
-  has_many(
-    :profile_pictures,
+  has_one(
+    :profile_picture,
     class_name: "ProfilePicture",
     foreign_key: :user_id,
     primary_key: :id,
@@ -108,11 +108,7 @@ class User < ActiveRecord::Base
 
   has_many :received_friends, through: :received_friendships, source: :friender
   has_many :initiated_friends, through: :initiated_friendships, source: :friendee
-  has_one :profile_pic, through: :profile_pictures, source: :photo
-
-  def profile_photo
-    self.photos.where(is_profile_pic: true)[0]
-  end
+  has_one :profile_pic, through: :profile_picture, source: :photo
 
   def friends
     friends = []

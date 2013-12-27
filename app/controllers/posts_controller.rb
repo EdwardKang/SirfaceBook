@@ -7,7 +7,6 @@ class PostsController < ApplicationController
 
     if params[:photo]
       params[:photo][:user_id] = current_user.id
-      params[:photo][:is_profile_pic] = false
       @post.photos.new(params[:photo])
     end
 

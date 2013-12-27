@@ -6,7 +6,7 @@
     <% sender = notification.sender %>
 
 		<section class="notification">
-      <% temp_profile_url = sender.profile_photo ? sender.profile_photo.pic : "default_profile_pic.jpeg" %>
+      <% temp_profile_url = sender.profile_pic ? sender.profile_pic.pic : "default_profile_pic.jpeg" %>
 
       <div class="notification-image">
         <%= link_to image_tag(temp_profile_url, class: "notification-photo"), wall_user_url(sender) %>
