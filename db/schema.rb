@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131227021942) do
+ActiveRecord::Schema.define(:version => 20131228025128) do
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20131227021942) do
     t.string   "notifiable_type"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "message"
   end
 
   add_index "notifications", ["notifiable_id", "notifiable_type"], :name => "index_notifications_on_notifiable_id_and_notifiable_type"
