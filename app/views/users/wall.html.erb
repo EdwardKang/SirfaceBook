@@ -59,7 +59,7 @@
     <section class="main-wall">
       <article>
         <ul class="posts-list">
-          <% @user.received_posts.order('created_at DESC').each do |post| %>
+          <% @user.received_posts.includes(:sender, :receiver, :comments => [:user => [:profile_pic]]).order('created_at DESC').each do |post| %>
             <li>
               <%= render "layouts/post_view", post: post, show_page: false %>
             </li>

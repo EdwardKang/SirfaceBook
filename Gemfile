@@ -10,8 +10,6 @@ gem "paperclip"
 gem "aws-sdk"
 gem "figaro"
 
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -33,6 +31,7 @@ gem 'backbone-on-rails'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem "bullet"
 end
 
 

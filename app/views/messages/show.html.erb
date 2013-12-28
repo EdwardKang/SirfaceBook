@@ -8,7 +8,7 @@
   	</section>
 
     <section class="message-children">
-    	<% @message.children.each do |message| %>
+    	<% @message.children.includes(:sender).each do |message| %>
         <%= render "message", message: message %>
     	<% end %>
     </section>

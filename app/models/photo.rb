@@ -3,7 +3,6 @@ class Photo < ActiveRecord::Base
 
   validates :pic, :attachment_presence => true
   validates_presence_of :user_id
-  validates :is_profile_pic, inclusion: { in: [true, false] }
 
   has_attached_file :pic, :styles => {}
 

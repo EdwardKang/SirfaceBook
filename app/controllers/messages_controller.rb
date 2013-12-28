@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   before_filter :in_conversation, only: [:show]
 
   def index
-    @messages = Message.where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id).where(parent_id: nil)
+    @messages = Message.includes(:receiver, :sender => [:profile_pic]).where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id).where(parent_id: nil)
   end
 
   def show

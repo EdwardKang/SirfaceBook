@@ -7,7 +7,9 @@
 	
 	<article>
 		<ul>
-			<% @user.friends.each do |friend| %>
+			<% friends = User.includes(:profile_pic).where("id IN (?)", current_user.friends_ids) %>
+			
+			<% friends.each do |friend| %>
 			
 			<li class="user-index">
         <% temp_profile_url = friend.profile_pic ? friend.profile_pic.pic : "default_profile_pic.jpeg" %>
@@ -17,7 +19,7 @@
 					<%= link_to "#{friend.first_name} #{friend.last_name}", wall_user_url(friend) %>
 					
 					<div class="friendship-button">
-						<input type="button" value="Friends" class="is-friend"> 
+						<input type="button" value="&#10004 Friends" class="is-friend"> 
 					</div>
 				</div>
 			</li>

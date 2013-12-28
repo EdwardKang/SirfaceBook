@@ -53,7 +53,7 @@
     						<%= link_to "your wall", wall_user_url(liked_obj.receiver) %>
     					<% else %>
     						likes your post on
-    						<%= link_to "#{liked_obj.post.receiver.first_name}'s wall", wall_user_url(liked_obj.post.receiver) %>
+    						<%= link_to "#{liked_obj.receiver.first_name}'s wall", wall_user_url(liked_obj.receiver) %>
     					<% end %>
     				<% end %>
       		<% end %>

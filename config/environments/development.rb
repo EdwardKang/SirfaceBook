@@ -44,4 +44,12 @@ FacebookLite::Application.configure do
       :s3_host_name => 's3.amazonaws.com' # or whatever your region host name is
     }
   }
+  
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+    Bullet.add_footer = true
+  end
 end

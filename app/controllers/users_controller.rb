@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :require_user!, except: [:new, :create]
 
   def index
-    @users = User.all
+    @users = User.includes(:profile_pic).all
   end
 
   def new
