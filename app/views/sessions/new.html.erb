@@ -1,9 +1,12 @@
 <div class="sign-in-page">
+	<h2 class="sign-in-header">Fakebook</h2>
+	
   <section class="sign-in">
-    <h2>Fakebook</h2>
 
     <form action="<%= session_url %>" method="post">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			
+			
 
       <div class="sign-in-buttons">
 				<input type="text" name="user[email]" value="<%= @user.email %>" class="sign-in-input" placeholder="Email">
@@ -15,5 +18,7 @@
     </form>
   </section>
 
-  <%= button_to "Sign Up a New Account!", new_user_url, method: :get, class: "sign-up-button" %>
+  <div class="sign-up-button-wrapper">
+		<%= button_to "Sign Up a New Account!", new_user_url, method: :get, class: "sign-up-button" %>
+	</div>
 </div>
