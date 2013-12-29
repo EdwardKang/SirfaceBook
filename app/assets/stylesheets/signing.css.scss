@@ -3,9 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .sign-in, .sign-up, .profile-form {
-  border: 2px solid black;
-  border-radius: 25px;
-  background-color: #a7d3ff;
+	width: 300px;
+  border-radius: 3px;
+  background-color: #2BF0FF;
   padding-bottom: 20px;
 }
 
@@ -16,9 +16,21 @@
   margin: auto;
   font-weight: bold;
 }
+
+.sign-in-buttons {
+	width: 190px;
+	margin: auto;
+}
+
+.sign-in-submit {
+	margin-top: 10px;
+	padding: 5px;
+	width: 180px;
+}
+
 .sign-in-input {
+	padding: 5px;
   width: 180px;
-  margin-left: 40px;
 }
 
 .sign-in-page, .sign-up-page {
@@ -48,7 +60,7 @@
   width: 190px;
   padding-top: 10px;
   margin-left: 40px;
-  color: blue;
+  color: #1CA4E8;
   font-size: 1em;
 }
 
