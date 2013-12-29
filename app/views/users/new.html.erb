@@ -1,56 +1,63 @@
 <div class="sign-up-page">
+	<h2 class="sign-up-header">Create Your Fakebook Account</h2>
+	
   <section class="sign-up">
-
-    <h2>Sign Up</h2>
-
     <form action="<%= users_url %>" method="post">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-      <input type="text" name="user[first_name]" value="<%= @user.first_name %>" class="sign-in-input" placeholder="First Name">
+      <div class="sign-up-buttons">
+				<input type="text" name="user[first_name]" value="<%= @user.first_name %>" class="sign-up-input" placeholder="First Name">
 
-      <input type="text" name="user[last_name]" value="<%= @user.last_name %>" class="sign-in-input" placeholder="Last Name">
+	      <input type="text" name="user[last_name]" value="<%= @user.last_name %>" class="sign-up-input" placeholder="Last Name">
 
-      <input type="text" name="user[email]" value="<%= @user.email %>" class="sign-in-input" placeholder="Email">
+	      <input type="text" name="user[email]" value="<%= @user.email %>" class="sign-up-input" placeholder="Email">
 
-      <input type="password" name="user[password]" class="sign-in-input" placeholder="Password">
+	      <input type="password" name="user[password]" class="sign-up-input" placeholder="Password">
 
-      <div class="birth-date">
-        <div class="birth-date-header">Birthday</div>
-        <select name="user[birth_month]" id="user_birth_month">
-          <option selected="selected">Month</option>
-          <% months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] %>
-          <% months.each do |month| %>
-            <option value="<%= month %>"><%= month %></option>
-          <% end %>
-        </select>
+	      <div class="birth-date">
+	        <div class="birth-date-header">Birthday</div>
+	        <select name="user[birth_month]" id="user_birth_month">
+	          <option selected="selected" value="">Month</option>
+	          <% months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] %>
+	          <% months.each do |month| %>
+	            <option value="<%= month %>"><%= month %></option>
+	          <% end %>
+	        </select>
 
-        <select name="user[birth_day]" id="user_birth_day">
-          <option selected="selected">Day</option>
-          <% (1..30).each do |day| %>
-            <option value="<%= day %>"><%= day %></option>
-          <% end %>
-        </select>
+	        <select name="user[birth_day]" id="user_birth_day">
+	          <option selected="selected" value="">Day</option>
+	          <% (1..30).each do |day| %>
+	            <option value="<%= day %>"><%= day %></option>
+	          <% end %>
+	        </select>
 
-        <select name="user[birth_year]" id="user_birth_year">
-          <option selected="selected">Year</option>
-          <% (1950..DateTime.now.year).to_a.reverse.each do |year| %>
-            <option value="<%= year %>"><%= year %></option>
-          <% end %>
-        </select>
-      </div>
+	        <select name="user[birth_year]" id="user_birth_year">
+	          <option selected="selected" value="">Year</option>
+	          <% (1950..DateTime.now.year).to_a.reverse.each do |year| %>
+	            <option value="<%= year %>"><%= year %></option>
+	          <% end %>
+	        </select>
+	      </div>
 
-      <div class="gender">
-        <label for="male">Male</label>
-        <input type="radio" name="user[gender]" value="Male" id="male">
+	      <div class="gender">
+					<div class="gender-type">
+		        <label for="male">Male</label>
+		        <input type="radio" name="user[gender]" value="Male" id="male">
+					</div>
+					
+					<div class="gender-type">
+		        <label for="female">Female</label>
+		        <input type="radio" name="user[gender]" value="Female" id="male">
+					</div>
+	      </div>
 
-        <label for="female">Female</label>
-        <input type="radio" name="user[gender]" value="Female" id="male">
-      </div>
 
-
-      <p><input type="submit" value="Sign Up" class="sign-in-submit"></p>
+	      <input type="submit" value="Sign Up" class="sign-in-submit">
+			</div>
     </form>
   </section>
-
-  <%= button_to "Sign In to an existing Account", new_session_url, method: :get, class: "sign-in-button" %>
+	
+	<div class="sign-in-button-wrapper">
+	  <%= button_to "Sign In to an existing Account", new_session_url, method: :get, class: "sign-in-button" %>
+	</div>
 </div>

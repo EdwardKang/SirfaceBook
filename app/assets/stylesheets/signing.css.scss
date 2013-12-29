@@ -2,52 +2,95 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.sign-in-page, .sign-up-page {
+  margin: auto;
+  padding: 0 30px;
+  width: 400px;
+  position: relative;
+  top: 100px;
+}
+
 .sign-in, .sign-up, .profile-form {
-	width: 300px;
+	width: 400px;
   border-radius: 3px;
   background-color: #DFE7FF;
-  padding: 20px 0;
+  padding: 50px 0;
+	box-shadow: 0px 2px 3px #C9C9C9;
+	margin-bottom: 10px;
+}
+
+.sign-up {
+	padding: 40px 0;
 }
 
 .sign-in-header {
-  padding-bottom: 20px;
-  font-size: 1.5em;
-  width: 110px;
+  padding-bottom: 40px;
+  font-size: 1.7em;
+  width: 120px;
   margin: auto;
-  font-weight: bold;
 }
 
-.sign-in-buttons {
-	width: 200px;
+.sign-up-header {
+	padding-bottom: 40px;
+	font-size: 1.5em;
+	width: 335px;
 	margin: auto;
 }
 
-.sign-in-submit {
-	margin-top: 10px;
-	padding: 10px 0px;
-	width: 200px;
-	background-color: #C9C9C9;
-	color: white;
+.sign-in-buttons, .sign-up-buttons {
+	width: 300px;
+	margin: auto;
 }
 
-.sign-in-input:first-child {
+.sign-in-photo-wrapper {
+	width: 150px;
+	height: 150px;
+	margin: auto;
+	margin-bottom: 40px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.sign-in-photo {
+	width: 150px;
+}
+
+.sign-in-input:first-child, .sign-up-input:first-child {
 	border-top: 1px solid #C9C9C9;
 }
 
-.sign-in-input {
+.sign-in-input, .sign-up-input {
 	padding: 10px;
-  width: 180px;
+  width: 280px;
 	border-bottom: 1px solid #C9C9C9;
 	border-left: 1px solid #C9C9C9;
 	border-right: 1px solid #C9C9C9;
 }
 
-.sign-in-page, .sign-up-page {
-  margin: auto;
-  padding: 0 30px;
-  width: 300px;
-  position: relative;
-  top: 100px;
+.birth-date {
+  padding-top: 15px;
+}
+
+.birth-date-header {
+	padding-bottom: 5px;
+}
+
+.gender {
+  padding: 15px 0;
+}
+
+.gender-type {
+	float: left;
+	margin-right: 15px;
+}
+
+.sign-in-submit {
+	margin-top: 10px;
+	padding: 10px 0px;
+	width: 302px;
+	background-color: #C9C9C9;
+	border-radius: 3px;
+	color: white;
 }
 
 .sign-in-submit:hover {
@@ -70,39 +113,20 @@
   text-decoration: underline;
 }
 
-.sign-up-page h2 {
-  padding: 20px 0;
-  font-size: 1.8em;
-  width: 100px;
-  margin: auto;
-  font-weight: bold;
-}
-
-.birth-date {
-  padding-top: 10px;
-  font-size: 1em;
-  margin-left: 40px;
-}
-
-.gender {
-  padding-top: 10px;
-  margin-left: 40px;
-}
-
 .sign-in-button {
-  border: 0;
-  margin: 0;
-  padding: 0;
   background: #fff;
-  width: 190px;
   padding-top: 10px;
-  margin-left: 40px;
-  color: blue;
-  font-size: 0.8em;
+  color: #1CA4E8;
+  font-size: 1em;
 }
 
 .sign-in-button:hover {
   text-decoration: underline;
+}
+
+.sign-in-button-wrapper {
+	width: 213px;
+	margin: auto;
 }
 
 .profile-form {
