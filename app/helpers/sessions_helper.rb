@@ -23,4 +23,9 @@ module SessionsHelper
   def require_no_current_user!
     redirect_to root_url unless !logged_in?
   end
+  
+  def require_profile_and_user!
+    return redirect_to new_session_url unless logged_in?
+    redirect_to new_profile_url unless current_user.profile
+  end
 end

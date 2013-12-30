@@ -7,8 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if logged_in? %>
+  <% if logged_in? && current_user.profile %>
     <%= render "layouts/nav" %>
+	<% elsif logged_in? && !current_user.profile %>
+		<%= render "layouts/fake_nav" %>
   <% end %>
 
   <% if flash[:errors] && !flash[:errors].empty? %>

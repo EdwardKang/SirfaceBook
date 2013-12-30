@@ -1,0 +1,19 @@
+<header class="header">
+  <div class="header-wrapper">
+    <h1 class="header-logo">
+      Fakebook
+    </h1>
+
+    <nav class="nav-header group">
+      <ul class="header-list">
+        <li class="fake-header-list">Home</li>
+        <li class="fake-header-list"><%= current_user.first_name %></li>
+        <li class="fake-header-list">Friend Requests</li>
+        <li class="fake-header-list">Inbox</li>
+        <li class="fake-header-list">Notifications</li>
+
+        <li><%= button_to "Logout", session_url, method: :delete, class: "logout" %></li>
+      </ul>
+    </nav>
+  </div>
+</header>

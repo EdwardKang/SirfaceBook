@@ -2,12 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.sign-in-page, .sign-up-page {
+.sign-in-page, .sign-up-page, .profile-setup-page {
   margin: auto;
-  padding: 0 30px;
   width: 400px;
   position: relative;
   top: 100px;
+	padding-bottom: 100px;
 }
 
 .sign-in, .sign-up, .profile-form {
@@ -37,7 +37,22 @@
 	margin: auto;
 }
 
-.sign-in-buttons, .sign-up-buttons {
+h3.profile-header {
+  font-size: 1.5em;
+  margin: auto;
+  padding-bottom: 40px;
+  width: 270px;
+}
+
+//CHANGE THIS #############################
+h2.profile-header {
+  font-weight: bold;
+  margin: auto;
+  width: 240px;
+  padding-bottom: 20px;
+}
+
+.sign-in-buttons, .sign-up-buttons, .profile-inputs {
 	width: 300px;
 	margin: auto;
 }
@@ -55,11 +70,11 @@
 	width: 150px;
 }
 
-.sign-in-input:first-child, .sign-up-input:first-child {
+.sign-in-input:first-child, .sign-up-input:first-child, .profile-input:first-child {
 	border-top: 1px solid #C9C9C9;
 }
 
-.sign-in-input, .sign-up-input {
+.sign-in-input, .sign-up-input, .profile-input {
 	padding: 10px;
   width: 280px;
 	border-bottom: 1px solid #C9C9C9;
@@ -84,13 +99,17 @@
 	margin-right: 15px;
 }
 
-.sign-in-submit {
+.sign-in-submit, .profile-submit {
 	margin-top: 10px;
 	padding: 10px 0px;
 	width: 302px;
 	background-color: #C9C9C9;
 	border-radius: 3px;
 	color: white;
+}
+
+.profile-submit {
+	margin-top: 30px;
 }
 
 .sign-in-submit:hover {
@@ -127,40 +146,4 @@
 .sign-in-button-wrapper {
 	width: 213px;
 	margin: auto;
-}
-
-.profile-form {
-  width: 310px;
-  margin: auto;
-}
-
-.profile-input {
-  width: 150px;
-}
-
-.profile-label {
-  display: inline-block;
-  width: 150px;
-}
-
-.profile-form {
-  padding: 20px;
-}
-
-.profile-setup-page {
-  margin-top: 100px;
-}
-
-h2.profile-header {
-  font-weight: bold;
-  margin: auto;
-  width: 240px;
-  padding-bottom: 20px;
-}
-
-h3.profile-header {
-  font-weight: bold;
-  margin: auto;
-  padding-bottom: 20px;
-  width: 267px;
 }

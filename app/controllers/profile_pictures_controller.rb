@@ -1,4 +1,6 @@
 class ProfilePicturesController < ApplicationController
+  before_filter :require_user!
+  
   def create
     current_profile_pic = current_user.profile_picture
     if current_profile_pic

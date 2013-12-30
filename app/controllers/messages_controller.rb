@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   include MessagesHelper
-
+  
+  before_filter :require_user!
   before_filter :in_conversation, only: [:show]
 
   def index

@@ -27,7 +27,7 @@ ul {
 }
 
 .header {
-  background: #00F;
+  background: #0533B2;
 }
 
 .header-logo {
@@ -47,28 +47,37 @@ div.header-wrapper {
   float: right;
 }
 
-.header-list:last-child {
+.header-list {
  border-right: 2px solid white;
 }
 
+.header-list li:last-child {
+	padding: 0;
+}
+
 .header-list > li {
+	padding: 15px 0;
   float: left;
-  padding: 15px 10px;
   border-left: 2px solid white;
 }
 
+.header-list > .fake-header-list {
+	padding: 15px 10px;
+	color: #C9C9C9;
+	float: left;
+	border-left: 2px solid white;
+}
+
 .header-list li a {
+	padding: 15px 10px;
+	background: #0533B2;
   color: #FFF;
   text-decoration: none;
 }
 
 .logout {
-  margin: 0px;
-  padding: 0px;
-  border: 0px;
-  font: inherit;
-  font-size: 1em;
-  background: blue;
+	padding: 15px 10px;
+  background: #0533B2;
   color: white;
 }
 
