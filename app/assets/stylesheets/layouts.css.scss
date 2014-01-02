@@ -1,4 +1,4 @@
-header, body, div, nav, ul, li, h1, p, input {
+header, body, div, nav, ul, li, h1, p, input, section, h5, h2, a {
   margin: 0;
   padding: 0;
   border: 0;
@@ -7,8 +7,24 @@ header, body, div, nav, ul, li, h1, p, input {
   vertical-align: baseline;
 }
 
+html {
+	height: 100%;
+}
+
+.yield-wrapper {
+	width: 100%;
+	display: block;
+	background: #DFE7FF;
+}
+
+.body-wrapper, .users-index-wrapper {
+	background-color: #FFF;
+	min-height: 100%;
+}
+
 body {
 	font-family: sans-serif;
+	height: 100%;
 }
 
 a {

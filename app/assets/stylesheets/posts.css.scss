@@ -1,12 +1,8 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-ul {
-	list-style: none;
-}
 
 .post-wrapper {
-  background: #a7d3ff;
   width: 550px;
   margin: 20px auto;
 }
@@ -19,10 +15,6 @@ ul {
   float: left;
 	margin-left: 10px;
   width: 480px;
-}
-
-.post-header {
-	padding-top: 5px;
 }
 
 .post-body {
@@ -42,80 +34,68 @@ ul {
 }
 
 .post-body-photo {
-  width: 400px;
-  margin: auto;
+  margin-left: 3px;
 }
 
 .post-photo {
-	padding-top: 40px;
+	padding-top: 25px;
   width: 350px;
 }
 
 .edit-post {
-	padding-top: 8px;
+	padding: 5px 0;
 }
 
 .edit-post > li {
 	float: left;
-	display: block;
 	font-size: .8em;
 	color: blue;
-	padding: 2px;
 }
 
 .edit-post li input {
-	border: 0;
-	margin: 0 15px 0 0;
-	padding: 0;
-	font: inherit;
-	background: inherit;
+	margin-right: 15px;
 	color: blue;
+	background: inherit;
+}
+
+.edit-post li input:last-child {
+	margin-right: 0px;
 }
 
 .edit-post time {
 	color: #888888;
-	margin: 0 7px 0 0;
-}
-
-.edit-post span {
-	margin: 0 15px 0 0;
+	margin-right: 10px;
 }
 
 .post-comments {
-
+	background: #EEEEEE;
 }
 
 .comment-header-photo {
-	width: 50px;
-	height: 50px;
-}
-
-.list-comment:first-child{
-  padding-top: 10px;
+	width: 40px;
+	height: 40px;
 }
 
 .list-comment {
-  padding: 8px 0;
+  padding: 5px;
+	padding-right: 20px;
   border-bottom: 1px solid white;
 }
-
-.list-comment:last-child {
-  border-bottom: none;
-};
 
 .left-comment {
 	float: left;
 }
 
 .comment-body {
-	padding: 4px;
-	margin-bottom: -10px;
+	padding-top: 3px;
+	padding-left: 2px;
 }
 
 .right-comment {
 	float: left;
 	margin-left: 10px;
 	font-size: .9em;
+	width: 390px;
 }
 
 .right-comment a {
@@ -125,7 +105,10 @@ ul {
 }
 
 .comment-text {
-	width: 300px;
+	width: 388px;
+	padding: 5px;
+	font-size: .8em;
+	border: 1px solid #C9C9C9;
 }
 
 .comment-submit {
@@ -133,5 +116,15 @@ ul {
 }
 
 .new-comment {
-  padding-bottom: 20px;
+	padding: 5px;
+}
+
+.left-new-comment {
+	float: left;
+	height: 40px;
+}
+
+.right-new-comment {
+	float: left;
+	margin-left: 10px;
 }

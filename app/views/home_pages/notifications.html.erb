@@ -18,45 +18,7 @@
         </div>
 
         <div class="notification-body">
-      		<%= link_to "#{sender.first_name} #{sender.last_name}", wall_user_url(sender) %>
-
-    			<% if notifiable_type == "Post" %>
-    				has sent you a
-    				<%= link_to "post", wall_user_url(current_user) %>
-    			<% elsif notifiable_type == "Message" %>
-    				has sent you a
-    				<%= link_to "message", message_url(notification.notifiable_id) %>
-    			<% elsif notifiable_type == "Friendship" %>
-    				<% if notification.notifiable.is_pending == true %>
-    					has sent you a <%= link_to "friend request", "/friend-requests" %>
-    				<% elsif notification.notifiable.friendee_id != current_user.id %>
-    					has confirmed your <b>friend request</b>
-            <% else %>
-              and you are now <b>friends</b>
-    				<% end %>
-    			<% elsif notifiable_type == "Comment" %>
-    				has commented on your
-    				<%= link_to "post", wall_user_url(notification.notifiable.post.receiver_id) %>
-    			<% elsif notifiable_type == "Like" %>
-    				<% liked_obj = notification.notifiable.likeable %>
-    				<% if liked_obj.class.name == "Comment" %>
-    					<% if liked_obj.post.receiver.id == current_user.id %>
-    						likes your comment on
-    						<%= link_to "your wall", wall_user_url(liked_obj.post.receiver) %>
-    					<% else %>
-    						likes your comment on
-    						<%= link_to "#{liked_obj.post.receiver.first_name}'s wall", wall_user_url(liked_obj.post.receiver) %>
-    					<% end %>
-    				<% elsif liked_obj.class.name == "Post" %>
-    					<% if liked_obj.receiver_id == current_user.id %>
-    						likes a post on
-    						<%= link_to "your wall", wall_user_url(liked_obj.receiver) %>
-    					<% else %>
-    						likes your post on
-    						<%= link_to "#{liked_obj.receiver.first_name}'s wall", wall_user_url(liked_obj.receiver) %>
-    					<% end %>
-    				<% end %>
-      		<% end %>
+      		<%= notification.message.html_safe %>
         </div>
       </div>
     </section>

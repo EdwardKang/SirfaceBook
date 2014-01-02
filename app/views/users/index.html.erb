@@ -2,31 +2,33 @@
 <% users_pending_initiated_friend_requests = current_user.pending_initiated_friend_requests %>
 <% users_pending_received_friend_requests = current_user.pending_received_friend_requests %>
 
-<section class="users-index">
-  <% @users.each do |user| %>
-      <% next if user.id == current_user.id %>
+<section class="users-index-wrapper">
+	<div class="users-index">
+	  <% @users.each do |user| %>
+	      <% next if user.id == current_user.id %>
 
-      <article class="user-index">
+	      <article class="user-index">
 
-  		<% received_friendship = users_pending_received_friend_requests.select { |friendship| friendship.friender_id == user.id }.first %>
-  		<% initiated_friendship = users_pending_initiated_friend_requests.select { |friendship| friendship.friendee_id == user.id }.first %>
-  		<% valid_friendship = current_user_requests.select { |friendship| friendship.friendee_id == user.id || friendship.friender_id == user.id }.first %>
+	  		<% received_friendship = users_pending_received_friend_requests.select { |friendship| friendship.friender_id == user.id }.first %>
+	  		<% initiated_friendship = users_pending_initiated_friend_requests.select { |friendship| friendship.friendee_id == user.id }.first %>
+	  		<% valid_friendship = current_user_requests.select { |friendship| friendship.friendee_id == user.id || friendship.friender_id == user.id }.first %>
 
-      <% temp_profile_url = user.profile_pic ? user.profile_pic.pic : "default_profile_pic.jpeg" %>
-      <%= link_to image_tag(temp_profile_url, class: "user-header-photo"), wall_user_url(user) %>
+	      <% temp_profile_url = user.profile_pic ? user.profile_pic.pic : "default_profile_pic.jpeg" %>
+	      <%= link_to image_tag(temp_profile_url, class: "user-header-photo"), wall_user_url(user) %>
 
 
-      <div class="index-right">
-        <%= link_to "#{user.first_name} #{user.last_name}", wall_user_url(user) %>
+	      <div class="index-right">
+	        <%= link_to "#{user.first_name} #{user.last_name}", wall_user_url(user) %>
 
-				<div class="friendship-button">
-				<%= render "layouts/friendship_buttons", user: user, valid_friendship: valid_friendship, received_friendship: received_friendship, initiated_friendship: initiated_friendship %>
-    		</div>
+					<div class="friendship-button">
+					<%= render "layouts/friendship_buttons", user: user, valid_friendship: valid_friendship, received_friendship: received_friendship, initiated_friendship: initiated_friendship %>
+	    		</div>
 				
-      </div>
+	      </div>
 			
-    </article>
-  <% end %>
+	    </article>
+	  <% end %>
+	</div>
 </section>
 
 <script>

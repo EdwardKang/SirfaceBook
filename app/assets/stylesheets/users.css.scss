@@ -8,9 +8,13 @@
   float: left;
 }
 
-.users-index {
+.users-index-wrapper {
   width: 1000px;
   margin: auto;
+}
+
+.users-index {
+	padding: 10px 40px;
 }
 
 .user-index {
@@ -23,8 +27,16 @@
 }
 
 .user-index a {
-  color: blue;
   font-weight: bold;
+}
+
+.friendship-button input {
+	padding: 3px;
+	margin-top: 3px;
+	font-size: .7em;
+	color: #FFF;
+	background: #0533B2;
+	border-radius: 2px;
 }
 
 .pending-request-header {

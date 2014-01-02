@@ -33,6 +33,6 @@ class Post < ActiveRecord::Base
     dependent: :destroy
   )
 
-  has_many :likes, as: :likeable
+  has_many :likes, as: :likeable, dependent: :destroy
   has_many :notifications, as: :notifiable, dependent: :destroy
 end

@@ -21,7 +21,7 @@
 
 			<li>
 				<% if commenter.id == current_user.id %>
-          <%= button_to "Delete Comment", comment_url(comment), method: :delete, :remote => true, :form_class => "delete-comment-button" %>
+          <%= button_to "Delete", comment_url(comment), method: :delete, :remote => true, :form_class => "delete-comment-button" %>
         <% end %>
 			</li>
 

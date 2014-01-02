@@ -36,7 +36,7 @@ class Notification < ActiveRecord::Base
     when 'Friendship'
       if self.notifiable.is_pending == true
         "has sent you a <a href='/friend-requests'>friend request</a>"
-      elsif self.notifiable.friendee_id != current_user_id
+      elsif self.notifiable.friendee_id != user_id
         "has confirmed you <b>friend request</b>"
       else
         "and you are now <b>friends</b>"
