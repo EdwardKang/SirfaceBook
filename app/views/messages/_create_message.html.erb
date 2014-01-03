@@ -1,15 +1,17 @@
 <form action="<%= messages_url %>" method="post">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 	<input type="hidden" name="message[sender_id]" value="<%= current_user.id %>">
-	<input type="text" name="message[text]">
+	<input type="text" name="message[text]" class="message-input-text">
 	
 	
 	<label for="receiver">Send To:</label>
 	<select name="message[receiver_id]" id="receiver">
+		<option selected="selected" value=""></option>
 		<% User.all.each do |user| %>
+			<% next if user == current_user %>
 			<option value="<%= user.id %>"><%= "#{user.first_name} #{user.last_name}" %></option>
 		<% end %>
 	</select>
 
-	<p><input type="submit" value="Send Message"></p>
+	<p><input type="submit" value="Send Message" class="message-submit"></p>
 </form>

@@ -1,9 +1,9 @@
 <form action="<%= messages_url %>" method="post" data-remote="true" id="message-create">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 	<input type="hidden" name="message[sender_id]" value="<%= current_user.id %>">
-	<input type="text" name="message[text]">
+	<input type="text" name="message[text]" class="add-message-show" placeholder="Write a Reply..">
 	<input type="hidden" name="message[receiver_id]" value="<%= receiver.id %>">
 	<input type="hidden" name="message[parent_id]" value="<%= parent.id %>">
 
-	<p><input type="submit" value="Send Message"></p>
+	<p><input type="submit" value="Send Message" class="message-show-submit"></p>
 </form>

@@ -11,10 +11,10 @@
             <% temp_profile_url = sender.profile_pic ? sender.profile_pic.pic : "default_profile_pic.jpeg" %>
             <%= image_tag(temp_profile_url, class: "message-sender-photo") %>
 
-            <div class="index-right">
+            <div class="messages-right">
               <div class="group">
                 <span class="message-names">
-          				<%= link_to "#{sender.first_name} #{sender.last_name}", wall_user_url(sender) %> &rarr;
+          				<%= link_to "#{sender.first_name} #{sender.last_name}", wall_user_url(sender) %> &#10140;
           				<%= link_to "#{receiver.first_name} #{receiver.last_name}", wall_user_url(receiver) %>
                 </span>
               </div>
@@ -25,7 +25,12 @@
     		<% end %>
     	</ul>
     </section>
-
-    <%= render "create_message" %>
   </div>
+	
+	<div class="create-message-wrapper">
+		<div class="create-message">
+			<h2>Create New Message</h2>
+	    <%= render "create_message" %>
+		</div>
+	</div>
 </div>

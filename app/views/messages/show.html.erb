@@ -1,20 +1,33 @@
 <div class="message-wrapper">
   <div class="messages-body">
-  	<section class="message group">
-  		<% parent_sender = @message.sender %>
-      <% parent_receiver = @message.receiver %>
+		
+		<h2 class="message-show-header">
+			Messages
+		</h2>
+		
+		<% parent_sender = @message.sender %>
+    <% parent_receiver = @message.receiver %>
 
-      <%= render "message", message: @message %>
-  	</section>
+    <%= render "message", message: @message %>
 
-    <section class="message-children">
-    	<% @message.children.includes(:sender).each do |message| %>
-        <%= render "message", message: message %>
-    	<% end %>
-    </section>
+  	<div class="message-children">
+			<% @message.children.includes(:sender).each do |message| %>
+	      <%= render "message", message: message %>
+	  	<% end %>
+		</div>
 
-  <% receiver = parent_sender.id == current_user.id ? parent_receiver : parent_sender %>
-  <%= render "add_message", parent: @message, receiver: receiver %>
+	  <% receiver = parent_sender.id == current_user.id ? parent_receiver : parent_sender %>
+  	
+		<section class="message group">
+	    <div class="message-left">
+				<% temp_profile_url = current_user.profile_pic ? current_user.profile_pic.pic : "default_profile_pic.jpeg" %>
+		    <%= link_to image_tag(temp_profile_url, class: "message-sender-photo"), wall_user_url(current_user) %>
+			</div>
+			
+			<div class="message-right">
+				<%= render "add_message", parent: @message, receiver: receiver %>
+			</div>
+		</section>
   </div>
 </div>
 

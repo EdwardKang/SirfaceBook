@@ -1,16 +1,22 @@
 <% sender = message.sender %>
-
 <% temp_profile_url = sender.profile_pic ? sender.profile_pic.pic : "default_profile_pic.jpeg" %>
-<%= image_tag(temp_profile_url, class: "message-sender-photo") %>
 <section class="message group">
 
-  <div class="index-right">
-    <header>
+  <div class="message-left">
+    <%= image_tag(temp_profile_url, class: "message-sender-photo") %>
+	</div>
+	
+	<div class="message-right">
+		<header>
 			<%= link_to "#{sender.first_name} #{sender.last_name}", wall_user_url(sender) %>
 		</header>
 
 		<article class="message-body">
 			<%= message.text %>
-    </article>
+		</article>
+		
+		<div class="message-time">
+			Sent <%= time_ago_in_words(message.created_at) %> ago
+		</div>
   </div>
 </section>

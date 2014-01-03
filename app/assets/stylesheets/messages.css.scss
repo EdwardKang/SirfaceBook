@@ -12,8 +12,8 @@
 }
 
 .message-sender-photo {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   float: left;
 }
 
@@ -21,45 +21,105 @@
   height: 75px;
 }
 
-.index-right {
+.messages-right {
   float: left;
   margin-left: 7px;
 }
 
-.index-right a {
+.messages-right a {
   color: blue;
 }
 
-.index-right a:hover {
-  text-decoration: underline;
-}
-
-.index-right .expand-conversation {
-  padding: 1px;
-  background: grey;
+.messages-right .expand-conversation {
+  padding: 3px;
+	border-radius: 2px;
+  background: #C9C9C9;
   color: white;
 }
 
 .message-names {
   float: left;
+	margin-bottom: 7px;
+}
+
+.create-message-wrapper {
+	border-top: 1px solid #C9C9C9;
+	width: 100%;
+	padding-top: 30px;
+}
+
+.create-message {
+	padding-left: 100px;
+}
+
+.create-message h2 {
+	padding-bottom: 10px;
+	font-size: 1.5em;
+}
+
+.message-input-text {
+	border: 1px solid #C9C9C9;
+}
+
+.message-submit {
+	margin-top: 5px;
+	background: #C9C9C9;
+	color: white;
+	padding: 3px;
+	border-radius: 2px;
+	font-size: .9em;
 }
 
 .messages-body {
-  padding: 40px 0 20px 100px;
-}
-
-.message header a {
-  color: blue;
-}
-
-.message header a:hover {
-  font-weight: bold;
+	width: 500px;
+	margin: auto;
+  padding: 40px 0 0 5px;
 }
 
 .message {
-  padding-bottom: 10px;
+	width: 500px;
+	background: #EEEEEE;
+  padding: 5px 0;
+	border-bottom: 1px solid #FFF;
+}
+
+.message-left {
+	float: left;
+}
+
+.message-right {
+	float: left;
+	margin-left: 10px;
+	font-size: .9em;
+	width: 430px;
+}
+
+.message-right a {
+	font-weight: bold;
 }
 
 .message-body {
-  padding-left: 5px;
+	padding: 3px 3px 5px 0;
+}
+
+.message-time {
+	color: #888888;
+	font-size: .8em;
+	float: left;
+}
+
+.message-show-header {
+	font-size: 1.5em;
+	padding-bottom: 20px;
+}
+
+.add-message-show {
+	font-size: .9em;
+	padding: 3px;
+	margin-top: 5px;
+	width: 400px;
+}
+
+.message-show-submit {
+	display: none;
 }
