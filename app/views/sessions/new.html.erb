@@ -1,3 +1,9 @@
+<% if flash[:errors] && !flash[:errors].empty? %>
+  <% flash[:errors].each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
+
 <div class="sign-in-page">
 	<h2 class="sign-in-header">Fakebook</h2>
 	

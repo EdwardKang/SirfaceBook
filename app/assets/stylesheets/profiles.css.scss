@@ -1,54 +1,105 @@
 // Place all the styles related to the profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.wall-header {
-  width: 700px;
+.wall-wrapper {
+  width: 1000px;
   margin: auto;
 }
 
+.wall-header {
+	position: relative;
+	border: 1px solid #c9c9c9;
+  width: 998px;
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0, #E8E8E8),
+		color-stop(0.91, #1C1C1C)
+	);
+	background-image: -o-linear-gradient(bottom, #E8E8E8 0%, #1C1C1C 91%);
+	background-image: -moz-linear-gradient(bottom, #E8E8E8 0%, #1C1C1C 91%);
+	background-image: -webkit-linear-gradient(bottom, #E8E8E8 0%, #1C1C1C 91%);
+	background-image: -ms-linear-gradient(bottom, #E8E8E8 0%, #1C1C1C 91%);
+	background-image: linear-gradient(to bottom, #E8E8E8 0%, #1C1C1C 91%);
+}
+
+.wall-header-photo {
+	position: relative;
+	height: 200px;
+	width: 200px;
+	float: left;
+	text-align: center;
+	left: 25px;
+	top: 25px;
+	overflow: hidden;
+	border: 4px solid #EEEEEE;
+	border-radius: 3px;
+	box-shadow: 0 0 1px #c9c9c9;
+}
+
 .wall-photo {
-  width: 400px;
-  float: left;
+	min-height: 100%;
+  min-width: 100%;
+	position: relative;
+  left: 100%;
+  margin-left: -200%;
 }
 
 .wall-header-right {
-  padding-left: 20px;
+  margin-left: 50px;
   float: left;
 }
 
 .wall-header-right h3 {
   padding: 60px 0 10px 0;
-  margin: 0;
+	font-size: 1.5em;
+	font-weight: bold;
 }
 
-.wall-header ul {
-  padding-left: 50px;
-  list-style: none;
-}
-
-.wall-header ul li {
-  float: left;
-  padding: 15px;
+.wall-header-right h5 {
+	margin-left: 5px;
 }
 
 .wall-nav {
-  width: 400px;
-  background: #C0C0C0;
+  width: 100%;
+  background: #FFF;
+	border-top: 1px solid #c9c9c9;
 }
 
-.wall-wrapper {
-  width: 1000px;
-  margin: auto;
-  margin-top: 20px;
+.wall-nav ul {
+	float: right;
+  list-style: none;
+	padding-right: 350px;
+}
+
+.wall-nav ul li {
+  float: left;
+	padding: 15px 0;
+	border-right: 1px solid #c9c9c9;
+}
+
+.wall-nav ul li:first-child {
+	border-left: 1px solid #c9c9c9;
+}
+
+.wall-nav ul li  a {
+	color: #0533B2;
+	padding: 15px 20px;
+}
+
+.wall {
+	padding-top: 30px;
 }
 
 .wall-sidebar {
-  width: 300;
+  width: 300px;
   float: left;
 }
 
 .about-header {
-  background: #C0C0C0;
+  background: #EEEEEE;
+	border: 1px solid #c9c9c9;
   padding: 5px;
   font-size: 1.2em;
   font-weight: bold;
@@ -59,15 +110,16 @@
 }
 
 .brief-about article {
+	border-left: 1px solid #c9c9c9;
+	border-right: 1px solid #c9c9c9;
 }
 
 .about-list {
-  border-top: 1px solid white;
-  background: #C8C8C8;
+  background: #FFF;
 }
 
 .about-list li {
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #c9c9c9;
   padding: 7px 0;
   padding-left: 20px;
 }
@@ -75,7 +127,8 @@
 .brief-photos {
   margin-top: 30px;
   width: 276px;
-  background: #C8C8C8;
+  background: #FFF;
+	border: 1px solid #c9c9c9;
 }
 
 .brief-photo {
@@ -88,14 +141,44 @@
   font-size: 1.2em;
   font-weight: bold;
   padding: 5px;
+	border-bottom: 1px solid #c9c9c9;
+	background: #EEEEEE;
 }
 
 .brief-photo-list li img {
-  padding: 3px;
+  padding: 4px;
 }
 
 .wall-right {
   float: left;
-  margin-left: 60px;
+	margin-left: 20px;
 }
 
+.wall-right-header, .main-wall-header {
+	padding: 5px;
+	font-size: 1.2em;
+	font-weight: bold;
+	border-bottom: 1px solid #c9c9c9;
+	background: #EEEEEE;
+	margin-bottom: 20px;
+}
+
+.update-status-field {
+	padding-left: 20px;
+}
+
+.wall-update-status {
+	background: #FFF;
+	padding-bottom: 20px;
+	margin-bottom: 30px;
+	border: 1px solid #c9c9c9;
+}
+
+.main-wall {
+	background: #FFF;
+	padding-bottom: 20px;
+}
+
+.main-wall article {
+	padding: 0 20px;
+}

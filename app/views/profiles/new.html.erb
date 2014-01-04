@@ -1,7 +1,8 @@
-<div class="profile-setup-page">
-	<h3 class="profile-header">Fill Out Your Basic Info</h2>
-	
-  <section class="profile-form">
-    <%= render :partial => 'form', :locals => { url: profiles_url, value: "post"} %>
-  </section>
+<div class="profile-setup-wrapper">
+	<div class="profile-setup-page">
+	  <section class="profile-form">
+			<h3 class="profile-header">Fill Out Your Basic Info</h2>
+	    <%= render :partial => 'form', :locals => { url: profiles_url, value: "post"} %>
+	  </section>
+	</div>
 </div>

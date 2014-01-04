@@ -7,7 +7,7 @@
 }
 
 .message-group {
-  padding-top: 50px;
+  padding-top: 25px;
   padding-left: 100px;
 }
 
@@ -19,6 +19,13 @@
 
 .list-message {
   height: 75px;
+}
+
+.empty-messages {
+	padding-left: 10px;
+	font-size: 1em;
+	font-weight: normal;
+	padding-bottom: 25px;
 }
 
 .messages-right {

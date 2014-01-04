@@ -3,7 +3,7 @@
   <input type="hidden" name="_method" value="<%= value %>">
 
   <div class="profile-inputs">
-		<input type="text" name="profile[high_school]" value="<%= @profile.high_school %>" class="profile-input" placeholder="High School">
+		<input type="text" name="profile[high_school]" value="<%= @profile.high_school %>" class="profile-input" placeholder="High School*">
 
 	  <input type="text" name="profile[college]" value="<%= @profile.college %>" class="profile-input" placeholder="College / University">
 
@@ -14,6 +14,8 @@
 	  <input type="text" name="profile[hometown]" value="<%= @profile.hometown %>" class="profile-input" placeholder="Hometown">
 
 	  <input type="text" name="profile[interests]" value="<%= @profile.interests %>" class="profile-input" placeholder="Interests">
+		
+		<p class="required-profile-field">(*) = required field</p>
 
 	  <input type="submit" value="Submit Your Profile" class="profile-submit">
 	</div>

@@ -6,10 +6,12 @@
 		<% initiated_friendship = users_pending_initiated_friend_requests.select { |friendship| friendship.friendee_id == @user.id }.first %>
 		<% valid_friendship = current_user_requests.select { |friendship| friendship.friendee_id == @user.id || friendship.friender_id == @user.id }.first %>
 
-<section class="wall-header">
+<section class="wall-header group">
   <div class="wall-header-body group">
-    <% temp_profile_url = @user.profile_pic ? @user.profile_pic.pic : "default_profile_pic.jpeg" %>
-    <%= image_tag(temp_profile_url, class: "wall-photo") %>
+		<div class="wall-header-photo">
+		  <% temp_profile_url = @user.profile_pic ? @user.profile_pic.pic : "default_profile_pic.jpeg" %>
+		  <%= image_tag(temp_profile_url, class: "wall-photo") %>
+		</div>
 
     <div class="wall-header-right">
       <h3><%= @user.first_name + " " + @user.last_name %></h3>

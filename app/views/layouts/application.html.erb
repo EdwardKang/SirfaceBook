@@ -18,12 +18,6 @@
 	<% elsif logged_in? && !current_user.profile %>
 		<%= render "layouts/fake_nav" %>
   <% end %>
-
-  <% if flash[:errors] && !flash[:errors].empty? %>
-    <% flash[:errors].each do |error| %>
-      <%= error %>
-    <% end %>
-  <% end %>
 	
 	<%= yield %>
 

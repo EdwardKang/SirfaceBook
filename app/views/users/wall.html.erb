@@ -1,73 +1,77 @@
-<%= render "header" %>
-
 <div class="wall-wrapper">
-  <div class="wall-sidebar">
-    <section class="brief-about">
-      <header class="about-header">About</header>
+	<%= render "header" %>
+	
+	<div class="wall">
+	  <div class="wall-sidebar">
+	    <section class="brief-about">
+	      <header class="about-header">About</header>
 
-      <article>
-        <ul class="about-list">
-          <% user_college = @user.profile.college %>
-          <li>
-            Studied at <%= user_college == "" ? @user.profile.high_school : user_college %>
-          </li>
+	      <article>
+	        <ul class="about-list">
+	          <% user_college = @user.profile.college %>
+	          <li>
+	            Studied at <%= user_college == "" ? @user.profile.high_school : user_college %>
+	          </li>
 
-          <li>
-            Birthday is <%= "#{@user.birth_month} #{@user.birth_day}, #{@user.birth_year}" %>
-          </li>
+	          <li>
+	            Birthday is <%= "#{@user.birth_month} #{@user.birth_day}, #{@user.birth_year}" %>
+	          </li>
 
-          <li>
-            Its a <%= @user.gender == "Male" ? "He" : "She" %>
-          </li>
-        </ul>
+	          <li>
+	            Its a <%= @user.gender == "Male" ? "He" : "She" %>
+	          </li>
+	        </ul>
 
-      </article>
-    </section>
+	      </article>
+	    </section>
 
-    <section class="brief-photos">
-      <header class="photo-header">Photos</header>
+	    <section class="brief-photos">
+	      <header class="photo-header">Photos</header>
 
-      <ul class="brief-photo-list group">
-        <% if @user.photos.count >= 4 %>
-          <% @user.photos.sample(4).each do |photo| %>
-            <li><%= image_tag(photo.pic, class: "brief-photo") %></li>
-          <% end %>
-        <% elsif @user.photos.count > 0 %>
-          <% 4.times do |t| %>
-            <li><%= image_tag(@user.photos.sample(1)[0].pic, class: "brief-photo") %></li>
-          <% end %>
-        <% else %>
-          <% 4.times do |t| %>
-            <li><%= image_tag("default_profile_pic.jpeg", class: "brief-photo") %></li>
-          <% end %>
-        <% end %>
-      </ul>
-    </section>
-  </div>
+	      <ul class="brief-photo-list group">
+	        <% if @user.photos.count >= 4 %>
+	          <% @user.photos.sample(4).each do |photo| %>
+	            <li><%= image_tag(photo.pic, class: "brief-photo") %></li>
+	          <% end %>
+	        <% elsif @user.photos.count > 0 %>
+	          <% 4.times do |t| %>
+	            <li><%= image_tag(@user.photos.sample(1)[0].pic, class: "brief-photo") %></li>
+	          <% end %>
+	        <% else %>
+	          <% 4.times do |t| %>
+	            <li><%= image_tag("default_profile_pic.jpeg", class: "brief-photo") %></li>
+	          <% end %>
+	        <% end %>
+	      </ul>
+	    </section>
+	  </div>
 
-  <div class="wall-right">
-    <section class="wall-update-status">
-      <% if @user.id == current_user.id %>
-        <h5>Update Status</h5>
-        <%= render "layouts/new_status" %>
-      <% elsif current_user.friends_ids.include?(@user.id) %>
-        <h5>Post</h5>
-        <%= render "layouts/new_post", user: @user %>
-      <% end %>
-    </section>
+	  <div class="wall-right">
+	    <section class="wall-update-status">
+	      <% if @user.id == current_user.id %>
+	        <h5 class="wall-right-header">Update Status</h5>
+	        <div class="update-status-field"><%= render "layouts/new_status" %></div>
+	      <% elsif current_user.friends_ids.include?(@user.id) %>
+	        <h5 class="wall-right-header">Post</h5>
+	        <div class="update-status-field"><%= render "layouts/new_post", user: @user %></div>
+	      <% end %>
+	    </section>
 
-    <section class="main-wall">
-      <article>
-        <ul class="posts-list">
-          <% @user.received_posts.includes(:photos, :receiver, sender: :profile_pic, :comments => [:user => [:profile_pic]]).order('created_at DESC').each do |post| %>
-            <li>
-              <%= render "layouts/post_view", post: post, show_page: false %>
-            </li>
-          <% end %>
-        </ul>
-      </article>
-    </section>
-  </div>
+	    <section class="main-wall">
+				<h5 class="main-wall-header">Wall's Posts</h5>
+				
+	      <article>
+	        <ul class="posts-list">
+	          <% @user.received_posts.includes(:photos, :receiver, sender: :profile_pic, :comments => [:user => [:profile_pic]]).order('created_at DESC').each do |post| %>
+	            <li>
+	              <%= render "layouts/post_view", post: post, show_page: false %>
+	            </li>
+	          <% end %>
+	        </ul>
+	      </article>
+	    </section>
+	  </div>
+	</div>
 </div>
 
 <script>
