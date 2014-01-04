@@ -14,7 +14,7 @@
 	    <ul class="user-photos group">
 	      <% @user.photos.each do |photo| %>
 	      <li>
-	        <%= image_tag(photo.pic, class: "photo-index-view") %>
+	        <%= link_to image_tag(photo.pic, class: "photo-index-view"), photo_url(photo) %>
 	      </li>
 	      <% end %>
 	    </ul>

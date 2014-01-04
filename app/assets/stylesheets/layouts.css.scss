@@ -18,7 +18,8 @@ html {
 }
 
 .body-wrapper, .users-index-wrapper, .message-wrapper,
-.profile-setup-wrapper {
+.profile-setup-wrapper, .pending-request-wrapper, 
+.notification-page, .photo-view-page {
 	background-color: #FFF;
 	min-height: 100%;
 }

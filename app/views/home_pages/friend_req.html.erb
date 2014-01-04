@@ -1,30 +1,34 @@
-<div class="pending-header-wrapper">
-  <h1 class="pending-request-header">Pending Friend Requests</h1>
-</div>
+<div class="pending-request-wrapper">
+	<div class="pending-body-wrapper">
+		<div class="pending-header-wrapper">
+		  <h1 class="pending-request-header">Pending Friend Requests</h1>
+		</div>
 
-<section class="users-index">
-  <% if current_user.pending_received_friends.empty? %>
-    <p class="no-requests">You Have No Pending Requests</p>
-  <% else %>
-		<% current_user.pending_received_friends.each do |friend| %>
-  		<article class="user-index">
-        <% temp_profile_url = friend.profile_pic ? friend.profile_pic.pic : "default_profile_pic.jpeg" %>
-        <%= link_to image_tag(temp_profile_url, class: "user-header-photo"), wall_user_url(friend) %>
+		<section class="users-index">
+		  <% if current_user.pending_received_friends.empty? %>
+		    <p class="no-requests">You Have No Pending Requests</p>
+		  <% else %>
+				<% current_user.pending_received_friends.each do |friend| %>
+		  		<article class="user-index">
+		        <% temp_profile_url = friend.profile_pic ? friend.profile_pic.pic : "default_profile_pic.jpeg" %>
+		        <%= link_to image_tag(temp_profile_url, class: "user-header-photo"), wall_user_url(friend) %>
 
-  		  <% received_friendship = Friendship.where(friender_id: current_user.id, friendee_id: friend.id) %>
+		  		  <% received_friendship = Friendship.where(friender_id: current_user.id, friendee_id: friend.id) %>
 
-        <div class="index-right">
-          <%= link_to "#{friend.first_name} #{friend.last_name}",	 wall_user_url(friend) %>
+		        <div class="index-right">
+		          <%= link_to "#{friend.first_name} #{friend.last_name}",	 wall_user_url(friend) %>
   				
-					<div class="friendship-button">
-						<%= render "layouts/accept_friend", user: friend, url: friendship_url(received_friendship) %>
-						<%= button_to "Cancel Friend Request", friendship_url(received_friendship), method: :delete, :remote => true, :form_class => "unfriend-button" %>
-					</div>
-        </div>
-      </article>
-		<% end %>
-  <% end %>
-</section>
+							<div class="friendship-button">
+								<%= render "layouts/accept_friend", user: friend, url: friendship_url(received_friendship) %>
+								<%= button_to "Cancel Friend Request", friendship_url(received_friendship), method: :delete, :remote => true, :form_class => "unfriend-button" %>
+							</div>
+		        </div>
+		      </article>
+				<% end %>
+		  <% end %>
+		</section>
+	</div>
+</div>
 
 <script>
 $(document).ready(function(event){
