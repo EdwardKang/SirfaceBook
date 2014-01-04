@@ -1,33 +1,32 @@
-<%= render "header" %>
-
 <section class="friends">
-  <header>
-    <h3>Friends</h3>
-  </header>
+	<%= render "header" %>
 	
-	<article>
-		<ul>
-			<% friends = User.includes(:profile_pic).where("id IN (?)", current_user.friends_ids) %>
+  <div class="user-friends-wrapper">
+		<header>
+	    <h3 class="user-friends-header">Friends</h3>
+	  </header>
+	
+		<article>
+			<ul>
+				<% friends = User.includes(:profile_pic).where("id IN (?)", current_user.friends_ids) %>
 			
-			<% friends.each do |friend| %>
+				<% friends.each do |friend| %>
 			
-			<li class="user-index">
-        <% temp_profile_url = friend.profile_pic ? friend.profile_pic.pic : "default_profile_pic.jpeg" %>
-        <%= link_to image_tag(temp_profile_url, class: "user-header-photo"), wall_user_url(friend) %>
+				<li class="user-index">
+	        <% temp_profile_url = friend.profile_pic ? friend.profile_pic.pic : "default_profile_pic.jpeg" %>
+	        <%= link_to image_tag(temp_profile_url, class: "user-header-photo"), wall_user_url(friend) %>
 				
-				<div class="index-right">
-					<%= link_to "#{friend.first_name} #{friend.last_name}", wall_user_url(friend) %>
+					<div class="index-right">
+						<%= link_to "#{friend.first_name} #{friend.last_name}", wall_user_url(friend) %>
 					
-					<div class="friendship-button">
-						<input type="button" value="&#10004 Friends" class="is-friend"> 
+						<div class="friendship-button">
+							<div class="is-friend">&#10004 Friends</div>
+						</div>
 					</div>
-				</div>
-			</li>
+				</li>
 			
-			<% end %>
-		</ul>
-		
-		
-	</article>
-		
+				<% end %>
+			</ul>
+		</article>
+	</div>		
 </section>

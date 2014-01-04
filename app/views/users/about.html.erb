@@ -1,48 +1,48 @@
-<%= render "header" %>
-
 <section class="about">
-  <header>
-    <h3 class="about-title">About</h3>
-  </header>
+	<%= render "header" %>
+	
+  <div class="about-content-wrapper group">
+		<header>
+	    <h3 class="about-title">About</h3>
+	  </header>
 
-  <article>
-    <div class="right">
-      <h2 class="table-header">Basic Information</h2>
-      <table class="basic-info" cellpadding="5">
-        <tr>
-          <th>Birthday</th>
-          <td><%= "#{@user.birth_month} #{@user.birth_day}, #{@user.birth_year}" %><td>
-        </tr>
+	  <article class="group">
+	    <div class="left">
+	      <h2 class="table-header">Basic Information</h2>
+	      <table class="basic-info" cellpadding="5">
+	        <tr>
+	          <th>Birthday</th>
+	          <td><%= "#{@user.birth_month} #{@user.birth_day}, #{@user.birth_year}" %><td>
+	        </tr>
 
-        <tr>
-          <th>Gender</th>
-          <td><%= @user.gender %></td>
-        </tr>
+	        <tr>
+	          <th>Gender</th>
+	          <td><%= @user.gender %></td>
+	        </tr>
 
-        <%= render "optional_row", detail: @user.profile.current_city, title: "Current City" %>
+	        <%= render "optional_row", detail: @user.profile.current_city, title: "Current City" %>
 
-        <%= render "optional_row", detail: @user.profile.hometown, title: "Hometown" %>
+	        <%= render "optional_row", detail: @user.profile.hometown, title: "Hometown" %>
 
-        <%= render "optional_row", detail: @user.profile.interests, title: "Interests" %>
-      </table>
-
-
-    </div>
+	        <%= render "optional_row", detail: @user.profile.interests, title: "Interests" %>
+	      </table>
 
 
-    <div class="left">
-      <h2 class="table-header">Work and Education</h2>
+	    </div>
 
-      <table class="work-info" cellpadding="5">
-        <%= render "optional_row", detail: @user.profile.high_school, title: "High School" %>
+	    <div class="right">
+	      <h2 class="table-header">Work and Education</h2>
 
-        <%= render "optional_row", detail: @user.profile.college, title: "College/University" %>
+	      <table class="work-info" cellpadding="5">
+	        <%= render "optional_row", detail: @user.profile.high_school, title: "High School" %>
 
-        <%= render "optional_row", detail: @user.profile.employer, title: "Employer" %>
+	        <%= render "optional_row", detail: @user.profile.college, title: "College/University" %>
 
-      </table>
-    </div>
+	        <%= render "optional_row", detail: @user.profile.employer, title: "Employer" %>
 
-  </article>
+	      </table>
+	    </div>
 
+	  </article>
+	</div>
 </section>
