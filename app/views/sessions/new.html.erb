@@ -21,7 +21,15 @@
 
 	      <input type="password" name="user[password]" class="sign-in-input" placeholder="Password">
 
-	      <input type="submit" value="Sign In" class="sign-in-submit">
+	      <div id="sign-in-buttons">
+					<input type="submit" value="Sign In" class="sign-in-submit">
+				
+					<form action="<%= session_url %>" method="post">
+						<input type="hidden" name="user[email]" value="melo@email">
+						<input type="hidden" name="user[password]" value="asdasd">
+						<input type="submit" value="Carmelo Anthony Guest Sign In" class="sign-in-submit" id="guest-login">
+					</form>
+				</div>
 			</div>
     </form>
   </section>
