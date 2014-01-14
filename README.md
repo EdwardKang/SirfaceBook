@@ -41,5 +41,5 @@ with the same relation
 1. Add kaminari for infinite scroll 
 2. Add some drop downs for the nav bar
 3. Add omniauth gem
-4. 
+4. Add search capabilities for users to easily find other users walls and send messages
 
