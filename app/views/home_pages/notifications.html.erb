@@ -1,6 +1,13 @@
 <div class="notification-page">
   <h1>Recent Notifications</h1>
 
+	<% if @notifications.empty? %>
+		<div class="no-notification">
+			You Have No Notifications
+		</div>
+		
+	<% else %>
+
 		<% @notifications.reverse.each do |notification| %>
 		<% notifiable_type = notification.notifiable_type %>
     <% sender = notification.sender %>
@@ -22,7 +29,7 @@
         </div>
       </div>
     </section>
-
+		<% end %>
 	<% end %>
 </div>
 

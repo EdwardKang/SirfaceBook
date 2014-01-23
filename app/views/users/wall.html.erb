@@ -47,26 +47,38 @@
 	  </div>
 
 	  <div class="wall-right">
-	    <section class="wall-update-status">
-	      <% if @user.id == current_user.id %>
+	    <% if @user.id == current_user.id %>
+				<section class="wall-update-status">
 	        <h5 class="wall-right-header">Update Status</h5>
 	        <div class="update-status-field"><%= render "layouts/new_status" %></div>
-	      <% elsif current_user.friends_ids.include?(@user.id) %>
+				</section>
+      <% elsif current_user.friends_ids.include?(@user.id) %>
+				<section class="wall-update-status">
 	        <h5 class="wall-right-header">Post</h5>
 	        <div class="update-status-field"><%= render "layouts/new_post", user: @user %></div>
-	      <% end %>
-	    </section>
+		    </section>
+	    <% end %>
 
 	    <section class="main-wall">
 				<h5 class="main-wall-header">Wall's Posts</h5>
 				
 	      <article>
 	        <ul class="posts-list">
-	          <% @user.received_posts.includes(:photos, :receiver, sender: :profile_pic, :comments => [:user => [:profile_pic]]).order('created_at DESC').each do |post| %>
-	            <li>
-	              <%= render "layouts/post_view", post: post, show_page: false %>
-	            </li>
-	          <% end %>
+	          <% posts = @user.received_posts.includes(:photos, :receiver, sender: :profile_pic, :comments => [:user => [:profile_pic]]) %>
+						
+						<% if posts.empty? %>
+							<li class="empty-wall">
+								BE THE FIRST TO POST ON THIS WALL!!
+							</li>
+						
+						<% else %>
+						
+							<% posts.order('created_at DESC').each do |post| %>
+		            <li>
+		              <%= render "layouts/post_view", post: post, show_page: false %>
+		            </li>
+		          <% end %>
+						<% end %>
 	        </ul>
 	      </article>
 	    </section>
