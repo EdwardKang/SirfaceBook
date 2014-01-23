@@ -24,6 +24,7 @@ This is mainly a rails app making use of :
 3. Javascript
 4. UJS
 5. HTML / CSS
+6. Amazon AWS
 
 ### Some Specifics
 
