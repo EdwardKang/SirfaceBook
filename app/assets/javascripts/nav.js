@@ -4,9 +4,13 @@ $(document).ready(function(event){
 		var $li = $a.closest(".has-dropdown");
 		var $ul = $a.closest(".header-list");
 		
-		$ul.find(".show").toggleClass("show");
+		var $div = $ul.find(".show");
+		var $dropdown = $li.find(".dropdown");
 		
-		$dropdown = $li.find(".dropdown");
+		if ($div[0] !== $dropdown[0]) {
+			$div.toggleClass("show");
+		}
+		
 		$dropdown.toggleClass("show");
 	});
 	
@@ -19,5 +23,19 @@ $(document).ready(function(event){
 	
 	$("body").on("click", '.has-dropdown', function(e){
 		e.stopPropagation();
+	});
+	
+	$(".index-right").on("ajax:success", ".unfriend-button", function(event, data){
+		$button = $(this);
+		
+		$article = $button.closest(".user-index-short");
+		$article.remove();
+	});
+	
+	$(".index-right").on("ajax:success", ".accept-friend-form", function(event, data){
+		$form = $(this);
+		
+		$article = $form.closest(".user-index-short");
+		$article.remove();
 	});
 });
