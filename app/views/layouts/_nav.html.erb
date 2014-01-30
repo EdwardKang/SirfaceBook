@@ -15,7 +15,7 @@
 				<li><%= link_to "Inbox", messages_url %></li>
         
 				<li class="has-dropdown">
-					<a>Friend Requests</a>
+					<a class="toggle-dropdown">Friend Requests</a>
 					
 					<div class="dropdown">
 						<div class="dropdown-header">
@@ -23,7 +23,7 @@
 						</div>
 						
 						<% if received_requests.empty? %>
-							<div>You Have No Pending Requests</div>
+							<div class="empty-dropdown">You Have No Pending Requests</div>
 						<% else %>
 							<% received_requests.each do |friend| %>
 				  		<article class="user-index-short">
@@ -51,14 +51,14 @@
 				</li>
         
 				<li class="has-dropdown">
-					<a>Notifications</a>
+					<a class="toggle-dropdown">Notifications</a>
 					<div class="dropdown right-aligned">
 						<div class="dropdown-header">
 							Pending Requests
 						</div>
 						
 						<% if notifications.empty? %>
-							<div>You Don't Have Any Notifications</div>
+							<div class="empty-dropdown">You Don't Have Any Notifications</div>
 						<% else %>
 							<% notifications.each do |notification| %>
 						    <% sender = notification.sender %>

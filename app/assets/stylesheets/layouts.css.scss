@@ -136,6 +136,10 @@ div.header-wrapper {
 	display: none;
 }
 
+.show {
+	display: block;
+}
+
 .right-aligned {
 	right: -1px;
 	left: auto;
@@ -145,6 +149,14 @@ div.header-wrapper {
 	font-size: .8em;
 	padding: 10px 10px;
 	border-bottom: 1px solid #c9c9c9;
+}
+
+.empty-dropdown {
+	font-size: .8em;
+	width: 250px;
+	padding: 10px;
+	font-weight: bold;
+	text-align: center;
 }
 
 .dropdown-footer {
