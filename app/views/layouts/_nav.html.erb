@@ -1,3 +1,7 @@
+<% notifications = Notification.includes(:notifiable, :sender => [:profile_pic]).order('created_at DESC').limit(4).where(user_id: current_user.id) %>
+
+<% received_requests = current_user.pending_received_friends.reverse[0..3] %>
+
 <header class="header">
   <div class="header-wrapper">
     <h1 class="header-logo">
@@ -8,9 +12,82 @@
       <ul class="header-list">
         <li><%= link_to "Home", root_url %></li>
         <li><%= link_to current_user.first_name, wall_user_url(current_user) %></li>
-        <li><%= link_to "Friend Requests", "/friend-requests" %></li>
-        <li><%= link_to "Inbox", messages_url %></li>
-        <li><%= link_to "Notifications", "/notifications" %></li>
+				<li><%= link_to "Inbox", messages_url %></li>
+        
+				<li class="has-dropdown">
+					<a>Friend Requests</a>
+					
+					<div class="dropdown">
+						<div class="dropdown-header">
+							Pending Requests
+						</div>
+						
+						<% if received_requests.empty? %>
+							<div>You Have No Pending Requests</div>
+						<% else %>
+							<% received_requests.each do |friend| %>
+				  		<article class="user-index-short">
+				        <% temp_profile_url = friend.profile_pic ? friend.profile_pic.pic : "default_profile_pic.jpeg" %>
+				        <%= link_to image_tag(temp_profile_url, class: "user-header-photo"), wall_user_url(friend) %>
+
+				  		  <% received_friendship = Friendship.where(friender_id: friend.id, friendee_id: current_user.id) %>
+
+				        <div class="index-right">
+				          <%= link_to "#{friend.first_name} #{friend.last_name}",	 wall_user_url(friend) %>
+  				
+									<div class="friendship-button-short">
+										<%= render "layouts/accept_friend_short", user: friend, url: friendship_url(received_friendship) %>
+										<%= button_to "Cancel", friendship_url(received_friendship[0]), method: :delete, :remote => true, :form_class => "unfriend-button" %>
+									</div>
+				        </div>
+				      </article>
+							<% end %>
+							
+							<div class="dropdown-footer">
+								<%= link_to "See All", "/friend-requests" %>
+							</div>
+						<% end %>
+					</div>
+				</li>
+        
+				<li class="has-dropdown">
+					<a>Notifications</a>
+					<div class="dropdown right-aligned">
+						<div class="dropdown-header">
+							Pending Requests
+						</div>
+						
+						<% if notifications.empty? %>
+							<div>You Don't Have Any Notifications</div>
+						<% else %>
+							<% notifications.each do |notification| %>
+						    <% sender = notification.sender %>
+
+								<section class="notification-short">
+						      <% temp_profile_url = sender.profile_pic ? sender.profile_pic.pic : "default_profile_pic.jpeg" %>
+
+						      <div class="notification-image">
+						        <%= link_to image_tag(temp_profile_url, class: "notification-photo"), wall_user_url(sender) %>
+						      </div>
+
+						      <div class="notification-right">
+						        <div class="delete-notification hidden">
+						          <%= button_to "", notification_url(notification), method: :delete, class: "delete-not-button", :remote => true, :form_class => "delete-notification-button" %>
+						        </div>
+
+						        <div class="notification-body-short">
+						      		<%= notification.message.html_safe %>
+						        </div>
+						      </div>
+						    </section>
+							<% end %>
+							
+							<div class="dropdown-footer">
+								<%= link_to "All Notifications", "/notifications" %>
+							</div>
+						<% end %>
+					</div>
+				</li>
 
         <li><%= button_to "Logout", session_url, method: :delete, class: "logout" %></li>
       </ul>

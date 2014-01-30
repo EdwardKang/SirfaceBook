@@ -87,11 +87,70 @@ div.header-wrapper {
 	border-left: 2px solid white;
 }
 
-.header-list li a {
+.header-list li > a {
 	padding: 15px 10px;
 	background: #0533B2;
   color: #FFF;
   text-decoration: none;
+}
+
+.friendship-button-short {
+	width: 150px;
+}
+
+.friendship-button-short input {
+	padding: 3px;
+	margin-top: 3px;
+	font-size: .7em;
+	color: #FFF;
+	background: #0533B2;
+	border-radius: 2px;
+	float:left;
+	margin-right: 10px;
+}
+
+.user-index-short {
+  width: 250px;
+  height: 50px;
+	padding: 5px 10px;
+	border-bottom: 1px solid #c9c9c9;
+}
+
+.has-dropdown {
+	position: relative;
+}
+
+.has-dropdown > a:hover {
+	cursor: pointer;
+}
+
+.dropdown {
+	box-shadow: 0px 2px 5px #C9C9C9;
+	border: 1px solid #c9c9c9;
+	border-top: none;
+	top: 48px;
+	left: -1px;
+	position: absolute;
+	background: #FFF;
+	z-index: 1;
+	display: none;
+}
+
+.right-aligned {
+	right: -1px;
+	left: auto;
+}
+
+.dropdown-header {
+	font-size: .8em;
+	padding: 10px 10px;
+	border-bottom: 1px solid #c9c9c9;
+}
+
+.dropdown-footer {
+	padding: 10px 0px;
+	text-align: center;
+	font-size: .8em;
 }
 
 .logout {
@@ -102,6 +161,19 @@ div.header-wrapper {
 
 .logout:hover {
   cursor: pointer;
+}
+
+.notification-short {
+  padding: 5px 10px;
+  height: 50px;
+  width: 300px;
+	border-bottom: 1px solid #c9c9c9;
+}
+
+.notification-body-short {
+	width: 200px;
+  margin: 5px 10px;
+	font-size: .9em;
 }
 
 .empty-block {
