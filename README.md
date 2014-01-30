@@ -32,16 +32,16 @@ This is mainly a rails app making use of :
 - used rails observer in order to track all the commits for the likes, comments, post and friendship models and created
 customized messages with links with imbeded html and executed with HTML escape
 
-- used polymorphic associations for both notifications and likes so that they could have associations with multiple tables
-with the same relation
+- used polymorphic associations for both notifications and likes so that they could have associations with multiple tables with the same relation
 
 - created friendship model with an is_pending column that waits to be created and updated when a request is send and accepted, mainly to show flexibility and understanding rails models and controllers (could have also made another join table for 2 users that only held a valid friendship.)
+
+- used jQuery in order to have drop down menus to show the most recent received friend requests and notifications without redirecting to another page
 
 
 ### To Do
 
 1. Add kaminari for infinite scroll 
-2. Add some drop downs for the nav bar
-3. Add omniauth gem
-4. Add search capabilities for users to easily find other users walls and send messages
+2. Add omniauth gem
+3. Add search capabilities for users to easily find other users walls and send messages
 
